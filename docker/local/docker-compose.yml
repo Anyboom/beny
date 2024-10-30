@@ -30,6 +30,7 @@ services:
     container_name: backend
     build:
       context: ../../backend
+      dockerfile: Dockerfile
     volumes:
       - ../../backend:/rails
     environment:
@@ -56,7 +57,7 @@ services:
       - nginx-server-network
       - postgres-network
     ports:
-      - "54321:5432"
+      - "5432:5432"
 
 networks:
   postgres-network:

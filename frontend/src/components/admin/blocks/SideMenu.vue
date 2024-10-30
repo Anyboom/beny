@@ -1,68 +1,63 @@
 <script setup lang="ts">
-  import Menu from "primevue/menu";
-  import { ref } from "vue";
+    import Menu from "primevue/menu";
+    import { ref } from "vue";
 
-  const items = ref([
-    {
-      label: "Ставки",
-      icon: "pi pi-file",
-      items: [
+    const items = ref([
         {
-          label: "Просмотр",
-          icon: "pi pi-plus",
+            label: "Таблица ставок",
+            icon: "pi pi-table",
+            route: {
+                name: "admin-bet-index",
+            },
         },
         {
-          label: "Ординар",
-          icon: "pi pi-folder-open",
+            label: "Действия",
+            items: [
+                {
+                    label: "Создать ставку",
+                    icon: "pi pi-plus",
+                    route: {
+                        name: "admin-bet-create",
+                    },
+                },
+            ],
         },
-        {
-          label: "Экспресс",
-          icon: "pi pi-folder-open",
-        },
-      ],
-    },
-    {
-      label: "Edit",
-      icon: "pi pi-file-edit",
-      items: [
-        {
-          label: "Copy",
-          icon: "pi pi-copy",
-        },
-        {
-          label: "Delete",
-          icon: "pi pi-times",
-        },
-      ],
-    },
-    {
-      label: "Search",
-      icon: "pi pi-search",
-    },
-    {
-      separator: true,
-    },
-    {
-      label: "Share",
-      icon: "pi pi-share-alt",
-      items: [
-        {
-          label: "Slack",
-          icon: "pi pi-slack",
-        },
-        {
-          label: "Whatsapp",
-          icon: "pi pi-whatsapp",
-        },
-      ],
-    },
-  ]);
+    ]);
 </script>
 
 <template>
-  <div class="sticky top-2">
-    <Menu :model="items" />
-  </div>
+    <div class="sticky top-2">
+        <Menu :model="items">
+            <template #item="{ item, props }">
+                <router-link
+                    v-if="item.route"
+                    v-slot="{ href, navigate }"
+                    :to="item.route"
+                    custom
+                >
+                    <a
+                        v-ripple
+                        :href="href"
+                        v-bind="props.action"
+                        @click="navigate"
+                    >
+                        <span :class="item.icon" />
+                        <span class="ml-2">{{ item.label }}</span>
+                    </a>
+                </router-link>
+                <a
+                    v-else
+                    v-ripple
+                    :href="item.url"
+                    :target="item.target"
+                    v-bind="props.action"
+                >
+                    <span :class="item.icon" />
+                    <span class="ml-2">{{ item.label }}</span>
+                </a>
+            </template>
+        </Menu>
+    </div>
 </template>
 
 <style scoped></style>
