@@ -5,64 +5,128 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0664645b-20ec-4b7a-b6c0-c119791213a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/db/seeds/2_sport.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/competition.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/country.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/forecast.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/sport.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/team.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/admin/forms/FormCreateBet.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/bet.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/competition.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/country.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/event.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/forecast.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/sport.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/team.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/entities/user.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/enums/event-status.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/shims-vue.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/stores/competition.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/stores/country.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/stores/forecast.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/stores/sport.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/stores/team.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/admin/CreateBetView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/db/seeds/3_team.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/db/seeds/4_competition.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/beny.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/beny.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/controllers/hello_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.github/dependabot.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.github/dependabot.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.rubocop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.rubocop.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.ruby-version" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.ruby-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Rakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/channels/application_cable/channel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/channels/application_cable/channel.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/channels/application_cable/connection.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/channels/application_cable/connection.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/competitions_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/competitions_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/countries_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/countries_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/forecasts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/forecasts_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/sports_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/sports_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/teams_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/teams_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/jobs/application_job.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/jobs/application_job.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/mailers/application_mailer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/mailers/application_mailer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/models/application_record.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/application_record.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/bet.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/bet.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/models/competition.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/competition.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/country.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/country.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/event.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/event.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/forecast.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/forecast.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/sport.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/sport.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/models/team.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/team.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/views/layouts/mailer.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/views/layouts/mailer.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/views/layouts/mailer.text.erb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/views/layouts/mailer.text.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/bin/brakeman" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/brakeman" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/bin/bundle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/bundle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/bin/docker-entrypoint" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/docker-entrypoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/bin/rails" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/rails" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/bin/rake" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/rake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/bin/rubocop" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/rubocop" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/bin/setup" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/setup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config.ru" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config.ru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/boot.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/boot.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/cable.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/cable.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/database.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/environment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/environment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/environments/development.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/environments/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/environments/production.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/environments/test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/environments/test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/initializers/cors.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/initializers/cors.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/initializers/filter_parameter_logging.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/initializers/filter_parameter_logging.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/initializers/inflections.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/initializers/inflections.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/locales/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/locales/en.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/puma.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/puma.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/storage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/storage.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241006212812_create_sports.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241006212812_create_sports.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241006212837_create_forecasts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241006212837_create_forecasts.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241006212855_create_countries.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241006212855_create_countries.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241006213046_create_competitions.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241006213046_create_competitions.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241006213142_create_teams.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241006213142_create_teams.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241007193643_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241007193643_create_users.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241007193732_create_bets.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241007193732_create_bets.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/migrate/20241007194051_create_events.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/migrate/20241007194051_create_events.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/db/schema.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/seeds.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/tmp/pids/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/seeds/1_country.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/db/seeds/1_country.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/seeds/1_country.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/db/seeds/2_sport.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/seeds/2_sport.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/test/channels/application_cable/connection_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test/channels/application_cable/connection_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/test/controllers/hello_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test/controllers/hello_controller_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/test/test_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test/test_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/database.drawio" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/local/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/local/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/local/nginx/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/local/nginx/default.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.vscode/extensions.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.vscode/extensions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/env.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nginx.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/postcss.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/competition.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/competition.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/country.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/country.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/forecast.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/forecast.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/sport.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/sport.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/team.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/team.api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/assets/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/ContentWrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/ContentWrapper.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/blocks/SearchBet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/forms/FormSearchBet.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/blocks/SideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/blocks/SideMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/blocks/TheHeading.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/blocks/TheHeading.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/forms/FormCreateBet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/forms/FormCreateBet.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/forms/FormSearchBet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/forms/FormSearchBet.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/bet.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/bet.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/competition.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/competition.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/country.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/country.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/event.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/event.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/forecast.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/forecast.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/sport.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/sport.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/team.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/team.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/entities/user.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/enums/event-status.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/enums/event-status.enum.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/layouts/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layouts/AdminLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/layouts/AppLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layouts/AppLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/layouts/AuthLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layouts/AuthLayout.vue" afterDir="false" />
@@ -157,12 +221,24 @@
       <change beforePath="$PROJECT_DIR$/frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/router/middleware/loadLayout.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/middleware/loadLayout.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/router/types/routes.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/types/routes.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/admin/MainView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/admin/BetTableView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shims-vue.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shims-vue.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/competition.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/competition.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/country.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/country.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/forecast.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/forecast.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/sport.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/sport.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/team.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/team.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/admin/BetTableView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/admin/BetTableView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/admin/CreateBetView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/admin/CreateBetView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/auth/SignInView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/auth/SignInView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/auth/SignUpView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/auth/SignUpView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/main/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/main/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.vitest.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.vitest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vitest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vitest.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +250,7 @@
       <list>
         <option value="Vue Composition API Component" />
         <option value="TypeScript File" />
+        <option value="Ruby File" />
       </list>
     </option>
   </component>
@@ -192,34 +269,86 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu/home/anyboom/project/daniilvolkov.github.io&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;wsl://Ubuntu@/home/anyboom/.asdf/shims/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;\\\\wsl$\\Ubuntu\\home\\anyboom\\beny\\frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.local.backend: Compose Deployment.executor": "Run",
+    "Docker.local.frontend: Compose Deployment.executor": "Run",
+    "Docker.local: Compose Deployment.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "//wsl$/Ubuntu/home/anyboom/project/beny",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "wsl://Ubuntu@/home/anyboom/.asdf/shims/node",
+    "nodejs_package_manager_path": "npm",
+    "ruby.structure.view.model.defaults.configured": "true",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "\\\\wsl$\\Ubuntu\\home\\anyboom\\project\\beny\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;vue.recent.templates&quot;: [
-      &quot;Vue Composition API Component&quot;
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="\\wsl$\Ubuntu\home\anyboom\beny\frontend\src\api" />
       <recent name="\\wsl$\Ubuntu\home\anyboom\beny\frontend\src\components\admin\forms" />
     </key>
+  </component>
+  <component name="RunManager" selected="Docker.local.backend: Compose Deployment">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="local: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker/local/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="local.backend: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="backend" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker/local/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="local.frontend: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="frontend" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker/local/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.local.backend: Compose Deployment" />
+        <item itemvalue="Docker.local: Compose Deployment" />
+        <item itemvalue="Docker.local.frontend: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -257,6 +386,8 @@
       <workItem from="1730061828493" duration="4506000" />
       <workItem from="1730323110652" duration="2560000" />
       <workItem from="1730325729251" duration="2206000" />
+      <workItem from="1730397125155" duration="3135000" />
+      <workItem from="1730400654767" duration="3885000" />
     </task>
     <servers />
   </component>

@@ -16,24 +16,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_194051) do
 
   create_table "bets", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
   create_table "competitions", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.bigint "country_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_competitions_on_country_id"
   end
 
   create_table "countries", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name", null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -43,9 +39,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_194051) do
     t.bigint "sport_id", null: false
     t.bigint "forecast_id", null: false
     t.bigint "bet_id", null: false
-    t.integer "coefficient"
-    t.boolean "status"
-    t.boolean "is_pre_match"
+    t.integer "coefficient", default: 1, null: false
+    t.integer "status", default: 0, null: false
+    t.boolean "is_pre_match", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bet_id"], name: "index_events_on_bet_id"
@@ -57,22 +53,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_194051) do
   end
 
   create_table "forecasts", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name", null: false
   end
 
   create_table "sports", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name", null: false
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.bigint "country_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_teams_on_country_id"
   end
 
