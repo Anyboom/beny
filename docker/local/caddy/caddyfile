@@ -1,0 +1,7 @@
+beny.localhost {
+    reverse_proxy frontend:8080
+}
+
+api.beny.localhost {
+    reverse_proxy backend:3000
+}

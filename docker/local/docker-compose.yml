@@ -1,0 +1,56 @@
+name: "beny"
+services:
+  caddy:
+    container_name: caddy
+    image: caddy:2.7.4
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    networks:
+      - caddy_network
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./caddy/caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - backend
+      - frontend
+  postgres:
+    container_name: postgres
+    image: postgres:14.12
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: beny
+  frontend:
+    container_name: frontend
+    build:
+      context: ../../frontend
+    volumes:
+      - ../../frontend:/usr/src/app
+    networks:
+      - beny_network
+      - caddy_network
+  backend:
+    container_name: backend
+    build:
+      context: ../../backend
+    volumes:
+      - ../../backend:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - beny_network
+      - caddy_network
+networks:
+  caddy_network:
+    name: caddy_network
+    external: true
+  beny_network:
+    name: beny_network
+
+volumes:
+  postgres-data:
