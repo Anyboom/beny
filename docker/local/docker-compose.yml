@@ -24,8 +24,11 @@ services:
       - postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: pass
       POSTGRES_DB: beny
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    ports:
+      - "54321:5432"
   frontend:
     container_name: frontend
     build:

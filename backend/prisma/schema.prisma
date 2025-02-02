@@ -1,8 +1,93 @@
 generator client {
-  provider = "postgresql"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Sport {
+  id String @id @default(uuid())
+  name String
+
+  events Event[]
+}
+
+model Forecast {
+  id String @id @default(uuid())
+  name String
+
+  events Event[]
+}
+
+model Country {
+  id String @id @default(uuid())
+  name String
+  competitions Competition[]
+  teams Team[]
+}
+
+model Competition {
+  id String @id @default(uuid())
+  name String
+  countryId String
+  country Country @relation(fields: [countryId], references: [id])
+
+  events Event[]
+}
+
+model Team {
+  id String @id @default(uuid())
+  name String
+  countryId String
+  country Country @relation(fields: [countryId], references: [id])
+
+  eventsOfHomeTeam Event[] @relation("homeTeam")
+  eventsOfGuestTeam Event[] @relation("guestTeam")
+}
+
+model User {
+  id String @id @default(uuid())
+  name String
+  password String
+  bets Bet[]
+}
+
+model Bet {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+
+  events Event[]
+}
+
+model Event {
+  id String @id @default(uuid())
+  status StatusEvent @default(NOT_CALCULATED)
+  coefficient Float
+  competitionId String
+  competition Competition @relation(fields: [competitionId], references: [id])
+
+  guestTeamId String
+  guestTeam Team @relation("guestTeam", fields: [guestTeamId], references: [id])
+
+  homeTeamId String
+  homeTeam Team @relation("homeTeam", fields: [homeTeamId], references: [id])
+
+  sportId String
+  sport Sport @relation(fields: [sportId], references: [id])
+
+  forecastId String
+  forecast Forecast @relation(fields: [forecastId], references: [id])
+
+  betId String
+  bet Bet @relation(fields: [betId], references: [id])
+}
+
+enum StatusEvent {
+  WIN
+  LOSE
+  RETURN
+  NOT_CALCULATED
 }
