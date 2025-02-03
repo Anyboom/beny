@@ -11,6 +11,8 @@ async function bootstrap() {
     new FastifyAdapter(),
     { cors: true },
   );
+
   await app.listen(3000, '0.0.0.0');
 }
+
 bootstrap();

@@ -29,6 +29,8 @@ services:
       POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
       - "54321:5432"
+    networks:
+      - beny_network
   frontend:
     container_name: frontend
     build:
