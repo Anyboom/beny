@@ -6,7 +6,7 @@ import { TeamType } from '@/repositories/team/team.type';
 export class TeamRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<TeamType[]> {
+  public async findAll(): Promise<TeamType[]> {
     return this.prismaService.team.findMany();
   }
 }

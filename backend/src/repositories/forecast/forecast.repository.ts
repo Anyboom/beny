@@ -6,7 +6,7 @@ import { ForecastType } from '@/repositories/forecast/forecast.type';
 export class ForecastRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<ForecastType[]> {
+  public async findAll(): Promise<ForecastType[]> {
     return this.prismaService.forecast.findMany();
   }
 }

@@ -6,7 +6,7 @@ import { BetType } from '@/repositories/bet/bet.type';
 export class BetRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<BetType[]> {
+  public async findAll(): Promise<BetType[]> {
     return this.prismaService.bet.findMany();
   }
 }

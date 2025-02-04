@@ -6,7 +6,7 @@ import { EventType } from '@/repositories/event/event.type';
 export class EventRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<EventType[]> {
+  public async findAll(): Promise<EventType[]> {
     return this.prismaService.event.findMany();
   }
 }

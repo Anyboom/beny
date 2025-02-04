@@ -6,7 +6,7 @@ import { CountryType } from '@/repositories/country/country.type';
 export class CountryRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<CountryType[]> {
+  public async findAll(): Promise<CountryType[]> {
     return this.prismaService.country.findMany();
   }
 }

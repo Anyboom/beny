@@ -6,7 +6,7 @@ import { CompetitionType } from '@/repositories/competition/competition.type';
 export class CompetitionRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<CompetitionType[]> {
+  public async findAll(): Promise<CompetitionType[]> {
     return this.prismaService.competition.findMany();
   }
 }

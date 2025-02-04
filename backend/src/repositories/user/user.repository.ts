@@ -6,7 +6,7 @@ import { UserType } from '@/repositories/user/user.type';
 export class UserRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<UserType[]> {
+  public async findAll(): Promise<UserType[]> {
     return this.prismaService.user.findMany();
   }
 }

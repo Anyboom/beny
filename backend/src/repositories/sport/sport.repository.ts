@@ -6,7 +6,7 @@ import { SportType } from '@/repositories/sport/sport.type';
 export class SportRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async getList(): Promise<SportType[]> {
+  public async findAll(): Promise<SportType[]> {
     return this.prismaService.sport.findMany();
   }
 }
