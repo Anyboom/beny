@@ -1,8 +1,8 @@
-import { StatusEventEnum } from '@/enums/status-event.enum';
+import { StatusEvent } from '@prisma/client';
 
 export type EventType = {
   id: string;
-  status: StatusEventEnum;
+  status: StatusEvent;
   coefficient: number;
   competitionId: string;
   guestTeamId: string;
