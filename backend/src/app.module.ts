@@ -11,6 +11,7 @@ import { ForecastModule } from '@/modules/forecast/forecast.module';
 import { SportModule } from '@/modules/sport/sport.module';
 import { TeamModule } from '@/modules/team/team.module';
 import { UserModule } from '@/modules/user/user.module';
+import { AuthModule } from '@/modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UserModule } from '@/modules/user/user.module';
     SportModule,
     TeamModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

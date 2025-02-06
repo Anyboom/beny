@@ -8,81 +8,81 @@ datasource db {
 }
 
 model Sport {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
 
   events Event[]
 }
 
 model Forecast {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
 
   events Event[]
 }
 
 model Country {
-  id String @id @default(uuid())
-  name String
+  id           String        @id @default(uuid())
+  name         String
   competitions Competition[]
-  teams Team[]
+  teams        Team[]
 }
 
 model Competition {
-  id String @id @default(uuid())
-  name String
+  id        String  @id @default(uuid())
+  name      String
   countryId String
-  country Country @relation(fields: [countryId], references: [id])
+  country   Country @relation(fields: [countryId], references: [id])
 
   events Event[]
 }
 
 model Team {
-  id String @id @default(uuid())
-  name String
+  id        String  @id @default(uuid())
+  name      String
   countryId String
-  country Country @relation(fields: [countryId], references: [id])
+  country   Country @relation(fields: [countryId], references: [id])
 
-  eventsOfHomeTeam Event[] @relation("homeTeam")
+  eventsOfHomeTeam  Event[] @relation("homeTeam")
   eventsOfGuestTeam Event[] @relation("guestTeam")
 }
 
 model User {
-  id String @id @default(uuid())
-  name String
+  id       String @id @default(uuid())
+  email    String
   password String
-  bets Bet[]
+  bets     Bet[]
 }
 
 model Bet {
-  id String @id @default(uuid())
+  id     String @id @default(uuid())
   userId String
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   events Event[]
 }
 
 model Event {
-  id String @id @default(uuid())
-  status StatusEvent @default(NOT_CALCULATED)
-  coefficient Float
+  id            String      @id @default(uuid())
+  status        StatusEvent @default(NOT_CALCULATED)
+  coefficient   Float
   competitionId String
-  competition Competition @relation(fields: [competitionId], references: [id])
+  competition   Competition @relation(fields: [competitionId], references: [id])
 
   guestTeamId String
-  guestTeam Team @relation("guestTeam", fields: [guestTeamId], references: [id])
+  guestTeam   Team   @relation("guestTeam", fields: [guestTeamId], references: [id])
 
   homeTeamId String
-  homeTeam Team @relation("homeTeam", fields: [homeTeamId], references: [id])
+  homeTeam   Team   @relation("homeTeam", fields: [homeTeamId], references: [id])
 
   sportId String
-  sport Sport @relation(fields: [sportId], references: [id])
+  sport   Sport  @relation(fields: [sportId], references: [id])
 
   forecastId String
-  forecast Forecast @relation(fields: [forecastId], references: [id])
+  forecast   Forecast @relation(fields: [forecastId], references: [id])
 
   betId String
-  bet Bet @relation(fields: [betId], references: [id])
+  bet   Bet    @relation(fields: [betId], references: [id])
 }
 
 enum StatusEvent {
