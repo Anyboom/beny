@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CountryRepository } from '@/repositories/country/country.repository';
-import { CountryType } from '@/repositories/country/country.type';
+import { Country } from '@prisma/client';
 
 @Injectable()
 export class CountryService {
   constructor(private countryRepository: CountryRepository) {}
 
-  public findAll(): Promise<CountryType[]> {
+  public findAll(): Promise<Country[]> {
     return this.countryRepository.findAll();
   }
 }

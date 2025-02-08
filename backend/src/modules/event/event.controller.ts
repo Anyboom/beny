@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { EventService } from './event.service';
-import { EventType } from '@/repositories/event/event.type';
+import { Event } from '@prisma/client';
 
 @Controller('event')
 export class EventController {
   constructor(private readonly eventService: EventService) {}
 
   @Get()
-  findAll(): Promise<EventType[]> {
+  findAll(): Promise<Event[]> {
     return this.eventService.findAll();
   }
 }

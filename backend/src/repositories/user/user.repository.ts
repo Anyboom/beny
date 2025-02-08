@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/services/prisma/prisma.service';
-import { UserType } from '@/repositories/user/user.type';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UserRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async findAll(): Promise<UserType[]> {
+  public async findAll(): Promise<User[]> {
     return this.prismaService.user.findMany();
   }
 
-  public async findByEmail(email: string): Promise<UserType | null> {
+  public async findByEmail(email: string): Promise<User | null> {
     return this.prismaService.user.findFirst({
       where: {
         email: email,
@@ -18,7 +18,7 @@ export class UserRepository {
     });
   }
 
-  public async create(userDTO: Omit<UserType, 'id'>): Promise<UserType> {
+  public async create(userDTO: Omit<User, 'id'>): Promise<User> {
     return this.prismaService.user.create({
       data: userDTO,
     });

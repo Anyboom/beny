@@ -1,12 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepository } from '@/repositories/user/user.repository';
 import * as bcrypt from 'bcrypt';
-import { UserType } from '@/repositories/user/user.type';
 import { JwtService } from '@nestjs/jwt';
 import { SignInRequestDto } from '@/modules/auth/dto/sign-in.request.dto';
 import { SignUpRequestDto } from '@/modules/auth/dto/sign-up.request.dto';
 import { SignInResponseDto } from '@/modules/auth/dto/sign-in.response.dto';
 import { SignUpResponseDto } from '@/modules/auth/dto/sign-up.response.dto';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +15,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  public async validate(email: string): Promise<UserType | null> {
+  public async validate(email: string): Promise<User | null> {
     return this.userRepository.findByEmail(email);
   }
 

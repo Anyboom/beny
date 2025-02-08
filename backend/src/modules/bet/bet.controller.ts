@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { BetService } from './bet.service';
-import { BetType } from '@/repositories/bet/bet.type';
+import { Bet } from '@prisma/client';
 
 @Controller('bet')
 export class BetController {
   constructor(private readonly betService: BetService) {}
 
   @Get()
-  findAll(): Promise<BetType[]> {
+  findAll(): Promise<Bet[]> {
     return this.betService.findAll();
   }
 }

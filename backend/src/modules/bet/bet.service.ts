@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { BetRepository } from '@/repositories/bet/bet.repository';
-import { BetType } from '@/repositories/bet/bet.type';
+import { Bet } from '@prisma/client';
 
 @Injectable()
 export class BetService {
   constructor(private betRepository: BetRepository) {}
 
-  findAll(): Promise<BetType[]> {
+  findAll(): Promise<Bet[]> {
     return this.betRepository.findAll();
   }
 }

@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { ForecastService } from './forecast.service';
-import { ForecastType } from '@/repositories/forecast/forecast.type';
+import { Forecast } from '@prisma/client';
 
 @Controller('forecast')
 export class ForecastController {
   constructor(private readonly forecastService: ForecastService) {}
 
   @Get()
-  findAll(): Promise<ForecastType[]> {
+  findAll(): Promise<Forecast[]> {
     return this.forecastService.findAll();
   }
 }

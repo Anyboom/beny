@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CompetitionType } from '@/repositories/competition/competition.type';
 import { CompetitionRepository } from '@/repositories/competition/competition.repository';
+import { Competition } from '@prisma/client';
 
 @Injectable()
 export class CompetitionService {
   constructor(private competitionRepository: CompetitionRepository) {}
 
-  findAll(): Promise<CompetitionType[]> {
+  findAll(): Promise<Competition[]> {
     return this.competitionRepository.findAll();
   }
 }
