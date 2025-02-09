@@ -7,3 +7,10 @@ declare module "vue-router" {
         layoutComponent?: VueElement;
     }
 }
+
+export enum RouteNamesEnum {
+    adminIndex = "admin-index",
+    index = "app-index",
+    signIn = "auth-sign-in",
+    signUp = "auth-sign-up",
+}

@@ -1,4 +1,11 @@
+<script setup lang="ts">
+    import TheHeading from "@/components/blocks/TheHeading.vue";
+    import SideMenu from "@/components/blocks/SideMenu.vue";
+    import BaseWrapper from "@/components/ui/BaseWrapper.vue";
+    import { Toast } from "primevue";
+</script>
 <template>
+    <Toast />
     <div class="flex flex-col gap-6 w-full h-fit min-h-full bg-gray p-4">
         <TheHeading />
         <div class="flex gap-6 h-full">
@@ -13,8 +20,3 @@
         </div>
     </div>
 </template>
-<script setup lang="ts">
-    import TheHeading from "@/components/blocks/TheHeading.vue";
-    import SideMenu from "@/components/blocks/SideMenu.vue";
-    import BaseWrapper from "@/components/ui/BaseWrapper.vue";
-</script>

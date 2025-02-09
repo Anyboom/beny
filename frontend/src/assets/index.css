@@ -29,8 +29,8 @@
 :root {
     --p-primary-color: var(--p-primary-500);
     --p-primary-contrast-color: var(--p-surface-0);
-    --p-primary-hover-color: var(--p-primary-600);
-    --p-primary-active-color: var(--p-primary-700);
+    --p-primary-hover-color: var(--p-surface-700);
+    --p-primary-active-color: var(--p-surface-800);
     --p-content-border-color: var(--p-surface-200);
     --p-content-hover-background: var(--p-surface-100);
     --p-content-hover-color: var(--p-surface-800);
@@ -55,15 +55,15 @@
         --p-content-hover-background: var(--p-surface-800);
         --p-content-hover-color: var(--p-surface-0);
         --p-highlight-background: color-mix(
-            in srgb,
-            var(--p-primary-400),
-            transparent 84%
+                in srgb,
+                var(--p-primary-400),
+                transparent 84%
         );
         --p-highlight-color: rgba(255, 255, 255, 0.87);
         --p-highlight-focus-background: color-mix(
-            in srgb,
-            var(--p-primary-400),
-            transparent 76%
+                in srgb,
+                var(--p-primary-400),
+                transparent 76%
         );
         --p-highlight-focus-color: rgba(255, 255, 255, 0.87);
         --p-text-color: var(--p-surface-0);

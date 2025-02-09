@@ -1,13 +1,14 @@
 <script setup lang="ts">
     import Menu from "primevue/menu";
     import { ref } from "vue";
+    import { RouteNamesEnum } from "@/router/types/router.types.ts";
 
     const items = ref([
         {
             label: "Таблица ставок",
             icon: "pi pi-table",
             route: {
-                name: "admin-bet-index",
+                name: RouteNamesEnum.adminIndex,
             },
         },
         {

@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { loadLayoutMiddleware } from "@/router/middleware/load-layout.middleware.ts";
 import { AppLayoutsEnum } from "@/layouts/types/layouts.types";
+import { checkAuthMiddleware } from "@/router/middleware/check-auth.middleware.ts";
+import { checkNotAuthMiddleware } from "@/router/middleware/check-not-auth.middleware.ts";
+import { RouteNamesEnum } from "@/router/types/router.types.ts";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -8,31 +11,34 @@ const router = createRouter({
         {
             path: "/admin",
             component: () => import("../views/admin/BetView.vue"),
-            name: "admin-bet-index",
+            name: RouteNamesEnum.adminIndex,
             meta: {
                 layout: AppLayoutsEnum.admin,
+                auth: true,
             },
         },
         {
-            path: "/signin",
+            path: "/sign-in",
             component: () => import("../views/auth/SignInView.vue"),
-            name: "auth-sign-in",
+            name: RouteNamesEnum.signIn,
             meta: {
                 layout: AppLayoutsEnum.auth,
+                missPageIfAuth: true,
             },
         },
         {
-            path: "/signup",
+            path: "/sign-up",
             component: () => import("../views/auth/SignUpView.vue"),
-            name: "auth-sign-up",
+            name: RouteNamesEnum.signUp,
             meta: {
                 layout: AppLayoutsEnum.auth,
+                missPageIfAuth: true,
             },
         },
         {
             path: "/",
             component: () => import("../views/main/HomeView.vue"),
-            name: "app-index",
+            name: RouteNamesEnum.index,
             meta: {
                 layout: AppLayoutsEnum.main,
             },
@@ -41,5 +47,7 @@ const router = createRouter({
 });
 
 router.beforeEach(loadLayoutMiddleware);
+router.beforeEach((to, _, next) => checkNotAuthMiddleware(to, next));
+router.beforeEach((to, _, next) => checkAuthMiddleware(to, next));
 
 export default router;

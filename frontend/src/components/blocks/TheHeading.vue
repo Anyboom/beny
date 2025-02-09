@@ -3,6 +3,10 @@
     import Popover from "primevue/popover";
     import Menubar from "primevue/menubar";
     import { ref } from "vue";
+    import { MenuItem } from "primevue/menuitem";
+    import { useAuthStore } from "@/stores/auth.store.ts";
+    import { useRouter } from "vue-router";
+    import { RouteNamesEnum } from "@/router/types/router.types.ts";
 
     const op = ref();
 
@@ -10,7 +14,10 @@
         op.value.toggle(event);
     };
 
-    const items = ref([
+    const authStore = useAuthStore();
+    const router = useRouter();
+
+    const items = ref<MenuItem[]>([
         {
             label: "Редактировать",
         },
@@ -19,6 +26,12 @@
         },
         {
             label: "Выйти",
+            command: () => {
+                authStore.removeToken();
+                router.push({
+                    name: RouteNamesEnum.signIn,
+                });
+            },
         },
     ]);
 </script>
@@ -28,7 +41,7 @@
         <template #start>
             <div class="flex items-center gap-2">
                 <span class="cursor-pointer hover:underline" @click="toggle">
-                    danilka.volkov.02@mail.ru
+                    Профиль
                 </span>
                 <Popover ref="op">
                     <div class="w-[15rem]">
