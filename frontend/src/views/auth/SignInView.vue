@@ -10,7 +10,9 @@
     import { AxiosError, AxiosResponse, HttpStatusCode } from "axios";
     import { useAuthStore } from "@/stores/auth.store.ts";
     import { RouteNamesEnum } from "@/router/types/router.types.ts";
+    import { useI18n } from "vue-i18n";
 
+    const { t } = useI18n();
     const { mutate } = useSignInApi();
 
     const toastInstance = useToast();
@@ -59,7 +61,7 @@
 </script>
 
 <template>
-    <h2 class="text-2xl mb-4">Авторизация</h2>
+    <h2 class="text-2xl mb-4">{{ t("sign-in-page.title") }}</h2>
     <base-wrapper class="flex flex-col gap-2">
         <SignInForm :submit="onSubmit" />
     </base-wrapper>
