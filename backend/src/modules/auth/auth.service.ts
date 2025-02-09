@@ -25,7 +25,10 @@ export class AuthService {
     const user = await this.validate(signInRequestDto.email);
 
     if (user === null) {
-      throw new HttpException('Вход запрещен', HttpStatus.UNAUTHORIZED);
+      throw new HttpException(
+        'The user already exists',
+        HttpStatus.UNAUTHORIZED,
+      );
     }
 
     const isComparePassword = await bcrypt.compare(
@@ -34,7 +37,10 @@ export class AuthService {
     );
 
     if (isComparePassword === false) {
-      throw new HttpException('Вход запрещен', HttpStatus.UNAUTHORIZED);
+      throw new HttpException(
+        'Check your password or email',
+        HttpStatus.UNAUTHORIZED,
+      );
     }
 
     const payload = {
@@ -53,10 +59,7 @@ export class AuthService {
     const user = await this.userRepository.findByEmail(signUpRequestDto.email);
 
     if (user !== null) {
-      throw new HttpException(
-        'Пользователь уже существует',
-        HttpStatus.CONFLICT,
-      );
+      throw new HttpException('The user already exists', HttpStatus.CONFLICT);
     }
 
     const newUser = await this.userRepository.create({
