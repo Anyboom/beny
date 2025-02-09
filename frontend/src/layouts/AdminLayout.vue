@@ -5,7 +5,14 @@
     import { Toast } from "primevue";
 </script>
 <template>
-    <Toast />
+    <Toast>
+        <template #message="{ message }">
+            <div class="p-toast-message-text">
+                <span class="p-toast-summary">{{ message.summary }}</span>
+                <div class="p-toast-detail">{{ message.detail }}</div>
+            </div>
+        </template>
+    </Toast>
     <div class="flex flex-col gap-6 w-full h-fit min-h-full bg-gray p-4">
         <TheHeading />
         <div class="flex gap-6 h-full">

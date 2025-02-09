@@ -43,18 +43,18 @@
         }
     }
 
-    function onSuccess(response: AxiosResponse): void {
+    async function onSuccess(response: AxiosResponse): Promise<void> {
         if (response.status !== HttpStatusCode.Created) {
             return;
         }
 
         authStore.setToken(response.data.access_token);
 
-        toastService.showSuccess(`Вы успешно вошли`);
-
-        router.push({
+        await router.push({
             name: RouteNamesEnum.adminIndex,
         });
+
+        toastService.showSuccess(`Вы успешно вошли`);
     }
 </script>
 

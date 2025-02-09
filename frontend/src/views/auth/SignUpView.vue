@@ -40,18 +40,18 @@
         }
     }
 
-    function onSuccess(response: AxiosResponse): void {
+    async function onSuccess(response: AxiosResponse): Promise<void> {
         if (response.status !== HttpStatusCode.Created) {
             return;
         }
 
+        await router.push({
+            name: RouteNamesEnum.signIn,
+        });
+
         toastService.showSuccess(
             `Пользователь зарегистрирован под почтой ${response.data.email}`,
         );
-
-        router.push({
-            name: RouteNamesEnum.signIn,
-        });
     }
 </script>
 
