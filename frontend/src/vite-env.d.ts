@@ -1,2 +1,2 @@
-/// <reference dto="vite/client" />
+/// <reference types="vite/client" />
 declare module "*.vue";
