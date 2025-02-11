@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { loadLayoutMiddleware } from "@/router/middleware/load-layout.middleware.ts";
+import { loadLayoutMiddleware } from "@/router/middleware/load-layout.middleware";
 import { AppLayoutsEnum } from "@/layouts/types/layouts.types";
-import { checkAuthMiddleware } from "@/router/middleware/check-auth.middleware.ts";
-import { checkNotAuthMiddleware } from "@/router/middleware/check-not-auth.middleware.ts";
-import { RouteNamesEnum } from "@/router/types/router.types.ts";
+import { checkAuthMiddleware } from "@/router/middleware/check-auth.middleware";
+import { checkNotAuthMiddleware } from "@/router/middleware/check-not-auth.middleware";
+import { RouteNamesEnum } from "@/router/types/router.types";
 
 const router = createRouter({
     history: createWebHistory(),

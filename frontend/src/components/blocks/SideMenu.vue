@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import Menu from "primevue/menu";
     import { ref } from "vue";
-    import { RouteNamesEnum } from "@/router/types/router.types.ts";
+    import { RouteNamesEnum } from "@/router/types/router.types";
 
     const items = ref([
         {

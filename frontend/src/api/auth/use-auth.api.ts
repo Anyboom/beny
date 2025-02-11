@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/vue-query";
-import { SignUpDto } from "@/api/auth/dto/sign-up.dto.ts";
-import { signInApi, signUpApi } from "@/api/auth/auth.api.ts";
-import { SignInDto } from "@/api/auth/dto/sign-in.dto.ts";
+import { type SignUpDto } from "@/api/auth/dto/sign-up.dto";
+import { signInApi, signUpApi } from "@/api/auth/auth.api";
+import { type SignInDto } from "@/api/auth/dto/sign-in.dto";
 
 export function useSignUpApi() {
     return useMutation({

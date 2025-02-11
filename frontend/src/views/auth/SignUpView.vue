@@ -1,14 +1,14 @@
 <script setup lang="ts">
     import BaseWrapper from "@/components/ui/BaseWrapper.vue";
     import SignUpForm from "@/components/forms/auth/sign-up/SignUpForm.vue";
-    import { FormSubmitEvent } from "@primevue/forms";
-    import { useSignUpApi } from "@/api/auth/use-auth.api.ts";
+    import { type FormSubmitEvent } from "@primevue/forms";
+    import { useSignUpApi } from "@/api/auth/use-auth.api";
     import { useToast } from "primevue";
-    import { ToastService } from "@/services/toast.service.ts";
+    import { ToastService } from "@/services/toast.service";
     import { useRouter } from "vue-router";
-    import { AxiosError, AxiosResponse, HttpStatusCode } from "axios";
-    import { SignUpDto } from "@/api/auth/dto/sign-up.dto.ts";
-    import { RouteNamesEnum } from "@/router/types/router.types.ts";
+    import { AxiosError, type AxiosResponse, HttpStatusCode } from "axios";
+    import { type SignUpDto } from "@/api/auth/dto/sign-up.dto";
+    import { RouteNamesEnum } from "@/router/types/router.types";
 
     const { mutate } = useSignUpApi();
 

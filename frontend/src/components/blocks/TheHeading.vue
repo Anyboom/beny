@@ -3,10 +3,10 @@
     import Popover from "primevue/popover";
     import Menubar from "primevue/menubar";
     import { ref } from "vue";
-    import { MenuItem } from "primevue/menuitem";
-    import { useAuthStore } from "@/stores/auth.store.ts";
+    import { useAuthStore } from "@/stores/auth.store";
     import { useRouter } from "vue-router";
-    import { RouteNamesEnum } from "@/router/types/router.types.ts";
+    import { RouteNamesEnum } from "@/router/types/router.types";
+    import type { MenuItem } from "primevue/menuitem";
 
     const op = ref();
 

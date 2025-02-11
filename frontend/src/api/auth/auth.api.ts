@@ -1,6 +1,6 @@
-import { SignUpDto } from "@/api/auth/dto/sign-up.dto.ts";
+import { type SignUpDto } from "@/api/auth/dto/sign-up.dto";
 import axios from "axios";
-import { SignInDto } from "@/api/auth/dto/sign-in.dto.ts";
+import { type SignInDto } from "@/api/auth/dto/sign-in.dto";
 
 export function signUpApi(data: SignUpDto) {
     return axios.post("http://api.beny.localhost/auth/sign-up", data);

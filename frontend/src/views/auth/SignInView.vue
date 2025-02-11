@@ -1,15 +1,15 @@
 <script setup lang="ts">
     import BaseWrapper from "@/components/ui/BaseWrapper.vue";
     import SignInForm from "@/components/forms/auth/sign-in/SignInForm.vue";
-    import { FormSubmitEvent } from "@primevue/forms";
-    import { useSignInApi } from "@/api/auth/use-auth.api.ts";
+    import type { FormSubmitEvent } from "@primevue/forms";
+    import { useSignInApi } from "@/api/auth/use-auth.api";
     import { useToast } from "primevue";
-    import { ToastService } from "@/services/toast.service.ts";
+    import { ToastService } from "@/services/toast.service";
     import { useRouter } from "vue-router";
-    import { SignUpDto } from "@/api/auth/dto/sign-up.dto.ts";
-    import { AxiosError, AxiosResponse, HttpStatusCode } from "axios";
-    import { useAuthStore } from "@/stores/auth.store.ts";
-    import { RouteNamesEnum } from "@/router/types/router.types.ts";
+    import type { SignUpDto } from "@/api/auth/dto/sign-up.dto.ts";
+    import { type AxiosResponse, AxiosError, HttpStatusCode } from "axios";
+    import { useAuthStore } from "@/stores/auth.store";
+    import { RouteNamesEnum } from "@/router/types/router.types";
     import { useI18n } from "vue-i18n";
 
     const { t } = useI18n();

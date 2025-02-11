@@ -1,6 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
-import { useAuthStore } from "@/stores/auth.store.ts";
-import { RouteNamesEnum } from "@/router/types/router.types.ts";
+import { useAuthStore } from "@/stores/auth.store";
+import { RouteNamesEnum } from "@/router/types/router.types";
 
 export function checkNotAuthMiddleware(
     route: RouteLocationNormalized,

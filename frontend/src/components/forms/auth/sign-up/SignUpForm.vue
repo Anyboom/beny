@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import * as zodInstance from "@primevue/forms/resolvers/zod";
     import Button from "primevue/button";
-    import { Form, FormSubmitEvent } from "@primevue/forms";
+    import { Form, type FormSubmitEvent } from "@primevue/forms";
     import InputText from "primevue/inputtext";
     import Password from "primevue/password";
-    import { signUpFormSchema } from "@/components/forms/auth/sign-up/sign-up-form.schema.ts";
+    import { signUpFormSchema } from "@/components/forms/auth/sign-up/sign-up-form.schema";
     import { Message } from "primevue";
 
     const { submit } = defineProps<{
