@@ -5,10 +5,10 @@ import { RouteNamesEnum } from "@/router/types/router.types";
 export function checkAuthMiddleware(
     route: RouteLocationNormalized,
     next: NavigationGuardNext,
-) {
+): void {
     const authStore = useAuthStore();
 
-    if (route.meta.auth && !authStore.accessToken) {
+    if (route.meta.auth && !authStore.getToken.value) {
         next({
             replace: true,
             name: RouteNamesEnum.signIn,

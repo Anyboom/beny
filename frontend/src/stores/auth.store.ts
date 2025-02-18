@@ -1,12 +1,8 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export const useAuthStore = defineStore("auth", () => {
     const accessToken = ref<string | null>(null);
-
-    if (localStorage.getItem("token")) {
-        accessToken.value = localStorage.getItem("token");
-    }
 
     function removeToken() {
         accessToken.value = null;
@@ -18,9 +14,17 @@ export const useAuthStore = defineStore("auth", () => {
         localStorage.setItem("token", token);
     }
 
+    const getToken = computed(() => {
+        if (localStorage.getItem("token") && accessToken.value == null) {
+            accessToken.value = localStorage.getItem("token");
+        }
+
+        return accessToken;
+    });
+
     return {
         removeToken,
         setToken,
-        accessToken,
+        getToken,
     };
 });
