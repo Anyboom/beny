@@ -18,6 +18,15 @@ const router = createRouter({
             },
         },
         {
+            path: "/admin/create",
+            component: () => import("../views/admin/BetCreateView.vue"),
+            name: RouteNamesEnum.adminCreate,
+            meta: {
+                layout: AppLayoutsEnum.admin,
+                auth: true,
+            },
+        },
+        {
             path: "/sign-in",
             component: () => import("../views/auth/SignInView.vue"),
             name: RouteNamesEnum.signIn,

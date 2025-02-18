@@ -10,6 +10,7 @@ declare module "vue-router" {
 
 export enum RouteNamesEnum {
     adminIndex = "admin-index",
+    adminCreate = "admin-create",
     index = "app-index",
     signIn = "auth-sign-in",
     signUp = "auth-sign-up",

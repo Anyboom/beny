@@ -17,6 +17,9 @@
                 {
                     label: "Создать ставку",
                     icon: "pi pi-plus",
+                    route: {
+                        name: RouteNamesEnum.adminCreate,
+                    },
                 },
             ],
         },
@@ -33,19 +36,13 @@
                     :to="item.route"
                     custom
                 >
-                    <a
-                        v-ripple
-                        :href="href"
-                        v-bind="props.action"
-                        @click="navigate"
-                    >
+                    <a :href="href" v-bind="props.action" @click="navigate">
                         <span :class="item.icon" />
                         <span class="ml-2">{{ item.label }}</span>
                     </a>
                 </router-link>
                 <a
                     v-else
-                    v-ripple
                     :href="item.url"
                     :target="item.target"
                     v-bind="props.action"
