@@ -1,10 +1,10 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import { ValidationPipe } from '@nestjs/common';
+import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
@@ -13,6 +13,11 @@ async function bootstrap() {
     new FastifyAdapter(),
     { cors: true },
   );
+
+  const reflector = app.get(Reflector);
+  const serializer = new ClassSerializerInterceptor(reflector);
+
+  app.useGlobalInterceptors(serializer);
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -24,7 +29,7 @@ async function bootstrap() {
   const config = new DocumentBuilder().setTitle('Сервис для ставок').build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory);
+  SwaggerModule.setup('swagger', app, documentFactory);
 
   await app.listen(3000, '0.0.0.0');
 }

@@ -18,9 +18,9 @@ export class UserRepository {
     });
   }
 
-  public async create(userDTO: Omit<User, 'id'>): Promise<User> {
+  public create(createUserData: Omit<User, 'id'>): Promise<User> {
     return this.prismaService.user.create({
-      data: userDTO,
+      data: createUserData,
     });
   }
 }

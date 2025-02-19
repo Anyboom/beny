@@ -1,44 +1,46 @@
-import {
-  Body,
-  ClassSerializerInterceptor,
-  Controller,
-  Get,
-  Post,
-  UseGuards,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from '@/modules/auth/auth.service';
-import { SignInRequestDto } from '@/modules/auth/dto/sign-in.request.dto';
-import { SignUpRequestDto } from '@/modules/auth/dto/sign-up.request.dto';
-import { SignInResponseDto } from '@/modules/auth/dto/sign-in.response.dto';
-import { SignUpResponseDto } from '@/modules/auth/dto/sign-up.response.dto';
+import { SignInRequestDto } from '@/modules/auth/dto/request/sign-in.request.dto';
+import { SignUpRequestDto } from '@/modules/auth/dto/request/sign-up.request.dto';
+import { SignInResponseDto } from '@/modules/auth/dto/response/sign-in.response.dto';
+import { SignUpResponseDto } from '@/modules/auth/dto/response/sign-up.response.dto';
 import { Authorized } from '@/modules/auth/decorators/authorized.decorator';
 import { User } from '@prisma/client';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
-import { ProfileResponseDto } from '@/modules/auth/dto/profile.response.dto';
+import { ProfileResponseDto } from '@/modules/auth/dto/response/profile.response.dto';
+import { plainToInstance } from 'class-transformer';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @ApiResponse({
+    type: SignInResponseDto,
+  })
   @Post('sign-in')
   public async signIn(
-    @Body() signInDto: SignInRequestDto,
+    @Body() signInRequestDto: SignInRequestDto,
   ): Promise<SignInResponseDto> {
-    return this.authService.signIn(signInDto);
+    return this.authService.signIn(signInRequestDto);
   }
 
+  @ApiResponse({
+    type: SignUpResponseDto,
+  })
   @Post('sign-up')
   public async signUp(
-    @Body() signUpDto: SignUpRequestDto,
+    @Body() signUpRequestDto: SignUpRequestDto,
   ): Promise<SignUpResponseDto> {
-    return this.authService.signUp(signUpDto);
+    return this.authService.signUp(signUpRequestDto);
   }
 
-  @UseInterceptors(ClassSerializerInterceptor)
+  @ApiResponse({
+    type: ProfileResponseDto,
+  })
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   public profile(@Authorized() user: User): ProfileResponseDto {
-    return new ProfileResponseDto(user);
+    return plainToInstance(ProfileResponseDto, user);
   }
 }
