@@ -9,7 +9,7 @@ import { User } from '@prisma/client';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { ProfileResponseDto } from '@/modules/auth/dto/response/profile.response.dto';
 import { plainToInstance } from 'class-transformer';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -38,6 +38,7 @@ export class AuthController {
   @ApiResponse({
     type: ProfileResponseDto,
   })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   public profile(@Authorized() user: User): ProfileResponseDto {

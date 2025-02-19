@@ -26,10 +26,17 @@ async function bootstrap() {
     }),
   );
 
-  const config = new DocumentBuilder().setTitle('Сервис для ставок').build();
+  const config = new DocumentBuilder()
+    .setTitle('Сервис для ставок')
+    .addBearerAuth()
+    .build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, documentFactory);
+  SwaggerModule.setup('swagger', app, documentFactory, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  });
 
   await app.listen(3000, '0.0.0.0');
 }
