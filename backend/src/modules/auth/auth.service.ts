@@ -1,29 +1,40 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { UserRepository } from '@/repositories/user/user.repository';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { SignInRequestDto } from '@/modules/auth/dto/request/sign-in.request.dto';
-import { SignUpRequestDto } from '@/modules/auth/dto/request/sign-up.request.dto';
-import { SignInResponseDto } from '@/modules/auth/dto/response/sign-in.response.dto';
-import { SignUpResponseDto } from '@/modules/auth/dto/response/sign-up.response.dto';
-import { User } from '@prisma/client';
+import { SignInDto } from '@/modules/auth/dto/sign-in.dto';
+import { TokenDto } from '@/modules/auth/dto/token.dto';
 import { plainToInstance } from 'class-transformer';
+import { UserService } from '@/modules/user/user.service';
+import { UserEntity } from '@/modules/user/entities/user.entity';
+import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private userRepository: UserRepository,
+    private userService: UserService,
     private jwtService: JwtService,
   ) {}
 
-  public async validate(email: string): Promise<User | null> {
-    return this.userRepository.findByEmail(email);
+  /**
+   * Функция для валидации пользователя.
+   * @param {string} email - почта пользователя.
+   * @returns {Promise<UserEntity | null>} - возвращает `UserEntity`, если `true`, иначе - `null`.
+   */
+  validate(email: string): Promise<UserEntity | null> {
+    try {
+      return this.userService.findOneByEmail(email);
+    } catch {
+      return Promise.resolve(null);
+    }
   }
 
-  public async signIn(
-    signInRequestDto: SignInRequestDto,
-  ): Promise<SignInResponseDto> {
-    const user = await this.validate(signInRequestDto.email);
+  /**
+   * Функция для авторизации пользователя.
+   * @param {signInDto} signInDto - данные пользователя.
+   * @returns {Promise<TokenDto>} - токен авторизации.
+   */
+  async signIn(signInDto: SignInDto): Promise<TokenDto> {
+    const user: UserEntity | null = await this.validate(signInDto.email);
 
     if (user === null) {
       throw new HttpException(
@@ -33,7 +44,7 @@ export class AuthService {
     }
 
     const isComparePassword = await bcrypt.compare(
-      signInRequestDto.password,
+      signInDto.password,
       user.password,
     );
 
@@ -52,23 +63,28 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
 
-    return plainToInstance(SignInResponseDto, token);
+    return plainToInstance(TokenDto, token);
   }
 
-  public async signUp(
-    signUpRequestDto: SignUpRequestDto,
-  ): Promise<SignUpResponseDto> {
-    const user = await this.userRepository.findByEmail(signUpRequestDto.email);
+  /**
+   * Функция для регистрации пользователя.
+   * @param {CreateUserDto} createUserDto - данные пользователя.
+   * @returns {Promise<UserEntity>} - созданная модель пользователя.
+   */
+  async signUp(createUserDto: CreateUserDto): Promise<UserEntity> {
+    const user: UserEntity | null = await this.userService.findOneByEmail(
+      createUserDto.email,
+    );
 
     if (user !== null) {
       throw new HttpException('The user already exists', HttpStatus.CONFLICT);
     }
 
-    const newUser = this.userRepository.create({
-      email: signUpRequestDto.email,
-      password: await bcrypt.hash(signUpRequestDto.password, 10),
+    const newUser: UserEntity = await this.userService.create({
+      email: createUserDto.email,
+      password: await bcrypt.hash(createUserDto.password, 10),
     });
 
-    return plainToInstance(SignUpResponseDto, newUser);
+    return plainToInstance(UserEntity, newUser);
   }
 }

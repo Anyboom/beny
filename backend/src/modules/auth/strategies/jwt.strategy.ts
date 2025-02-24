@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AuthService } from '@/modules/auth/auth.service';
-import { User } from '@prisma/client';
+import { UserEntity } from '@/modules/user/entities/user.entity';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  validate(payload: Pick<User, 'email'>) {
+  validate(payload: UserEntity): Promise<UserEntity | null> {
     return this.authService.validate(payload.email);
   }
 }

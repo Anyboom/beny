@@ -1,4 +1,4 @@
-import { NestFactory, Reflector } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import {
   FastifyAdapter,
@@ -6,6 +6,7 @@ import {
 } from '@nestjs/platform-fastify';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { PrismaClientErrorFilter } from '@/filters/prisma-client-error.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -14,6 +15,7 @@ async function bootstrap() {
     { cors: true },
   );
 
+  const httpAdapter = app.get(HttpAdapterHost);
   const reflector = app.get(Reflector);
   const serializer = new ClassSerializerInterceptor(reflector);
 
@@ -25,6 +27,10 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+
+  const prismaExceptionFilter = new PrismaClientErrorFilter(httpAdapter);
+
+  app.useGlobalFilters(prismaExceptionFilter);
 
   const config = new DocumentBuilder()
     .setTitle('Сервис для ставок')
