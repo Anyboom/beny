@@ -1,5 +1,7 @@
+import type { ToastServiceMethods } from "primevue";
+
 export class ToastService {
-    public constructor(private instance: any) {}
+    public constructor(private instance: ToastServiceMethods) {}
 
     showMessage(
         message: string,
