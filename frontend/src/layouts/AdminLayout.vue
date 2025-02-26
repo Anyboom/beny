@@ -19,11 +19,7 @@
             <base-wrapper class="h-fit">
                 <SideMenu />
             </base-wrapper>
-            <div
-                class="flex w-full h-full gap-6 flex-row justify-between overflow-auto"
-            >
-                <slot></slot>
-            </div>
+            <slot></slot>
         </div>
     </div>
 </template>
