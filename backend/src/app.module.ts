@@ -10,6 +10,8 @@ import { ForecastModule } from '@/modules/forecast/forecast.module';
 import { SportModule } from '@/modules/sport/sport.module';
 import { TeamModule } from '@/modules/team/team.module';
 import { UserModule } from '@/modules/user/user.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -24,6 +26,20 @@ import { UserModule } from '@/modules/user/user.module';
     SportModule,
     TeamModule,
     UserModule,
+    ThrottlerModule.forRoot({
+      throttlers: [
+        {
+          ttl: 60000,
+          limit: 10,
+        },
+      ],
+    }),
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
   ],
 })
 export class AppModule {}
