@@ -4,9 +4,9 @@ import { computed } from "vue";
 import type { TeamEntity } from "@/entities/team.entity";
 
 export const useTeamStore = defineStore("team", () => {
-    const query = useFindAllOfTeams();
+  const query = useFindAllOfTeams();
 
-    const values = computed<TeamEntity[]>(() => query.data.value?.data ?? []);
+  const values = computed<TeamEntity[]>(() => query.data.value?.data ?? []);
 
-    return { values };
+  return { values };
 });

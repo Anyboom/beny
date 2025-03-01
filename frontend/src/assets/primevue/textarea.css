@@ -1,5 +1,5 @@
 .p-textarea {
-    @apply appearance-none rounded-md
+  @apply appearance-none rounded-md
         border border-surface-300 dark:border-surface-700 
         enabled:hover:border-surface-400 dark:enabled:hover:border-surface-600
         enabled:focus:border-primary
@@ -14,17 +14,17 @@
 }
 
 .p-textarea.p-invalid {
-    @apply border-red-400 dark:border-red-300;
+  @apply border-red-400 dark:border-red-300;
 }
 
 .p-textarea.p-variant-filled {
-    @apply bg-surface-50 dark:bg-surface-800;
+  @apply bg-surface-50 dark:bg-surface-800;
 }
 
 .p-textarea-fluid {
-    @apply w-full;
+  @apply w-full;
 }
 
 .p-textarea-resizable {
-    @apply overflow-hidden resize-none;
+  @apply overflow-hidden resize-none;
 }

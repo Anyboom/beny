@@ -14,11 +14,15 @@
     }
   },
   "extends": [
-    "plugin:vue/vue3-essential",
-    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "plugin:@typescript-eslint/strict",
     "prettier"
   ],
-  "plugins": ["vue", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "vue",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -26,10 +30,15 @@
         "endOfLine": "auto"
       }
     ],
-    "vue/multi-word-component-names": "off",
-    "vue/no-multiple-template-root": "off",
-    "vue/no-reserved-component-names": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "vue/define-emits-declaration": [
+      "error",
+      "type-literal"
+    ],
+    "vue/define-props-declaration": [
+      "error",
+      "type-based"
+    ],
+    "vue/prefer-use-template-ref": "error",
+    "vue/require-typed-ref": "error"
   }
 }

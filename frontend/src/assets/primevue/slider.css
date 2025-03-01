@@ -1,9 +1,9 @@
 .p-slider {
-    @apply relative bg-surface-200 dark:bg-surface-700 rounded-sm;
+  @apply relative bg-surface-200 dark:bg-surface-700 rounded-sm;
 }
 
 .p-slider-handle {
-    @apply cursor-grab touch-none flex items-center justify-center h-[20px] w-[20px]
+  @apply cursor-grab touch-none flex items-center justify-center h-[20px] w-[20px]
         bg-surface-200 dark:bg-surface-700 rounded-full
         transition-colors duration-200
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
@@ -14,29 +14,29 @@
 }
 
 .p-slider-range {
-    @apply block bg-primary rounded-sm;
+  @apply block bg-primary rounded-sm;
 }
 
 .p-slider.p-slider-horizontal {
-    @apply h-[3px];
+  @apply h-[3px];
 }
 
 .p-slider-horizontal .p-slider-range {
-    @apply top-0 left-0 h-full;
+  @apply top-0 left-0 h-full;
 }
 
 .p-slider-horizontal .p-slider-handle {
-    @apply top-1/2 -mt-[10px] -ml-[10px];
+  @apply top-1/2 -mt-[10px] -ml-[10px];
 }
 
 .p-slider-vertical {
-    @apply min-h-[100px] w-[3px];
+  @apply min-h-[100px] w-[3px];
 }
 
 .p-slider-vertical .p-slider-handle {
-    @apply left-1/2 -mb-[10px] -ml-[10px];
+  @apply left-1/2 -mb-[10px] -ml-[10px];
 }
 
 .p-slider-vertical .p-slider-range {
-    @apply bottom-0 left-0 w-full;
+  @apply bottom-0 left-0 w-full;
 }

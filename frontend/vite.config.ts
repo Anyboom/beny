@@ -9,15 +9,15 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [vue(), vueDevTools(), eslint()],
-    resolve: {
-        alias: {
-            "@": fileURLToPath(new URL("./src", import.meta.url)),
-        },
+  plugins: [vue(), vueDevTools(), eslint()],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-    server: {
-        port: 8080,
-        host: "0.0.0.0",
-        allowedHosts: true,
-    },
+  },
+  server: {
+    port: 8080,
+    host: "0.0.0.0",
+    allowedHosts: true,
+  },
 });

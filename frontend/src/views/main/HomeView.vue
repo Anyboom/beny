@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    import Button from "primevue/button";
+  import Button from "primevue/button";
 </script>
 
 <template>
-    <Button label="wrerew"></Button>
+  <Button label="wrerew"></Button>
 </template>

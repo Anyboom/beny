@@ -3,10 +3,10 @@ import { findAllOfTeams } from "@/api/team/team.api";
 import { useTeamKeys } from "@/api/team/use-team.keys";
 
 export function useFindAllOfTeams() {
-    return useQuery({
-        queryKey: [useTeamKeys.FIND_ALL],
-        queryFn: findAllOfTeams,
-        retry: false,
-        staleTime: 5000,
-    });
+  return useQuery({
+    queryKey: [useTeamKeys.FIND_ALL],
+    queryFn: findAllOfTeams,
+    retry: false,
+    staleTime: 5000,
+  });
 }

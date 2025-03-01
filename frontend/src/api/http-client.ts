@@ -7,29 +7,29 @@ import { useAuthStore } from "@/stores/auth.store";
 const httpClient = axios.create();
 
 httpClient.interceptors.request.use((config) => {
-    const authStore = useAuthStore();
+  const authStore = useAuthStore();
 
-    if (authStore.getToken.value) {
-        config.headers.Authorization = `Bearer ${authStore.getToken.value}`;
-    }
+  if (authStore.getToken.value) {
+    config.headers.Authorization = `Bearer ${authStore.getToken.value}`;
+  }
 
-    return config;
+  return config;
 });
 
 httpClient.interceptors.response.use(
-    (response) => response,
-    async (error: AxiosError) => {
-        const userStore = useUserStore();
+  (response) => response,
+  async (error: AxiosError) => {
+    const userStore = useUserStore();
 
-        if (error.response?.status === 401) {
-            await userStore.logout();
-            await router.push({
-                name: RouteNamesEnum.signIn,
-            });
-        }
+    if (error.response?.status === 401) {
+      await userStore.logout();
+      await router.push({
+        name: RouteNamesEnum.signIn,
+      });
+    }
 
-        return Promise.reject(error);
-    },
+    return Promise.reject(error);
+  },
 );
 
 export default httpClient;

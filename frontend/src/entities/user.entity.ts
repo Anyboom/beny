@@ -1,4 +1,4 @@
 export type UserEntity = {
-    id: string;
-    email: string;
+  id: string;
+  email: string;
 };

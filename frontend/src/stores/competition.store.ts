@@ -4,9 +4,9 @@ import type { CompetitionEntity } from "@/entities/competition.entity";
 import { computed } from "vue";
 
 export const useCompetitionStore = defineStore("competition", () => {
-    const { data } = useFindAllOfCompetitions();
+  const { data } = useFindAllOfCompetitions();
 
-    const values = computed<CompetitionEntity[]>(() => data.value?.data ?? []);
+  const values = computed<CompetitionEntity[]>(() => data.value?.data ?? []);
 
-    return { values };
+  return { values };
 });

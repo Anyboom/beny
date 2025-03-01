@@ -4,9 +4,9 @@ import type { SportEntity } from "@/entities/sport.entity";
 import { computed } from "vue";
 
 export const useSportStore = defineStore("sport", () => {
-    const { data } = useFindAllOfSports();
+  const { data } = useFindAllOfSports();
 
-    const values = computed<SportEntity[]>(() => data.value?.data ?? []);
+  const values = computed<SportEntity[]>(() => data.value?.data ?? []);
 
-    return { values };
+  return { values };
 });

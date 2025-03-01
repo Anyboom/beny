@@ -16,14 +16,14 @@ const app = createApp(App);
 const pinia = createPinia();
 
 const i18n = createI18n({
-    locale: "ru",
-    messages: {
-        ru: ruLocale,
-    },
+  locale: "ru",
+  messages: {
+    ru: ruLocale,
+  },
 });
 
 app.use(PrimeVue, {
-    theme: "none",
+  theme: "none",
 });
 
 app.directive("tooltip", Tooltip);

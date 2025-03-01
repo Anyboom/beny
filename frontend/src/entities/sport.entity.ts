@@ -1,4 +1,4 @@
 export type SportEntity = {
-    id: string;
-    name: string;
+  id: string;
+  name: string;
 };

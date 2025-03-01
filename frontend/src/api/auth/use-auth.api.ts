@@ -5,22 +5,22 @@ import { type SignInDto } from "@/api/auth/dto/sign-in.dto";
 import { useAuthKeys } from "@/api/auth/use-auth.keys";
 
 export function useSignUpApi() {
-    return useMutation({
-        mutationKey: [useAuthKeys.SIGN_UP],
-        mutationFn: (data: SignUpDto) => signUpApi(data),
-    });
+  return useMutation({
+    mutationKey: [useAuthKeys.SIGN_UP],
+    mutationFn: (data: SignUpDto) => signUpApi(data),
+  });
 }
 
 export function useSignInApi() {
-    return useMutation({
-        mutationKey: [useAuthKeys.SIGN_IN],
-        mutationFn: (data: SignInDto) => signInApi(data),
-    });
+  return useMutation({
+    mutationKey: [useAuthKeys.SIGN_IN],
+    mutationFn: (data: SignInDto) => signInApi(data),
+  });
 }
 
 export function useProfileApi() {
-    return useQuery({
-        queryKey: [useAuthKeys.PROFILE],
-        queryFn: profileApi,
-    });
+  return useQuery({
+    queryKey: [useAuthKeys.PROFILE],
+    queryFn: profileApi,
+  });
 }
