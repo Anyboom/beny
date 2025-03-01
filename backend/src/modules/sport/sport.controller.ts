@@ -6,12 +6,14 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { SportService } from './sport.service';
 import { CreateSportDto } from './dto/create-sport.dto';
 import { UpdateSportDto } from './dto/update-sport.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { SportEntity } from '@/modules/sport/entities/sport.entity';
+import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 
 @Controller('sport')
 export class SportController {
@@ -21,6 +23,8 @@ export class SportController {
     type: SportEntity,
     status: 201,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createSportDto: CreateSportDto): Promise<SportEntity> {
     return this.sportService.create(createSportDto);
@@ -30,6 +34,8 @@ export class SportController {
     type: SportEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<SportEntity[]> {
     return this.sportService.findAll();
@@ -39,6 +45,8 @@ export class SportController {
     type: SportEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string): Promise<SportEntity> {
     return this.sportService.findOne(id);
@@ -48,6 +56,8 @@ export class SportController {
     type: SportEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -60,6 +70,8 @@ export class SportController {
     type: SportEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<SportEntity> {
     return this.sportService.remove(id);

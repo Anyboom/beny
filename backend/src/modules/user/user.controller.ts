@@ -6,13 +6,15 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { UserEntity } from '@/modules/user/entities/user.entity';
 import { plainToInstance } from 'class-transformer';
+import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 
 @Controller('user')
 export class UserController {
@@ -22,6 +24,8 @@ export class UserController {
     type: UserEntity,
     status: 201,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return plainToInstance(UserEntity, this.userService.create(createUserDto));
@@ -31,6 +35,8 @@ export class UserController {
     type: UserEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(): Promise<UserEntity[]> {
     return plainToInstance(UserEntity, await this.userService.findAll());
@@ -40,6 +46,8 @@ export class UserController {
     type: UserEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string): UserEntity {
     return plainToInstance(UserEntity, this.userService.findOne(id));
@@ -49,6 +57,8 @@ export class UserController {
     type: UserEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -64,6 +74,8 @@ export class UserController {
     type: UserEntity,
     status: 200,
   })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): UserEntity {
     return plainToInstance(UserEntity, this.userService.remove(id));
