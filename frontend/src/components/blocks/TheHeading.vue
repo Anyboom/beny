@@ -3,10 +3,10 @@
     import Popover from "primevue/popover";
     import Menubar from "primevue/menubar";
     import { ref } from "vue";
-    import { useAuthStore } from "@/stores/auth.store";
     import { useRouter } from "vue-router";
     import { RouteNamesEnum } from "@/router/types/router.types";
     import type { MenuItem } from "primevue/menuitem";
+    import { useUserStore } from "@/stores/user.store";
 
     const op = ref();
 
@@ -14,7 +14,7 @@
         op.value.toggle(event);
     };
 
-    const authStore = useAuthStore();
+    const userStore = useUserStore();
     const router = useRouter();
 
     const items = ref<MenuItem[]>([
@@ -26,14 +26,16 @@
         },
         {
             label: "Выйти",
-            command: () => {
-                authStore.removeToken();
-                router.push({
-                    name: RouteNamesEnum.signIn,
-                });
-            },
+            command: logout,
         },
     ]);
+
+    async function logout() {
+        await userStore.logout();
+        await router.push({
+            name: RouteNamesEnum.signIn,
+        });
+    }
 </script>
 
 <template>

@@ -6,5 +6,7 @@ export function useFindAllOfCompetitions() {
     return useQuery({
         queryKey: [useCompetitionKeys.FIND_ALL],
         queryFn: findAllOfCompetitions,
+        retry: false,
+        staleTime: 5000,
     });
 }

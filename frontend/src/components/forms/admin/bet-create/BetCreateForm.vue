@@ -18,10 +18,10 @@
     const forecastStore = useForecastStore();
     const competitionStore = useCompetitionStore();
 
-    const { data: dataTeams } = storeToRefs(teamStore);
-    const { data: dataSports } = storeToRefs(sportStore);
-    const { data: dataForecasts } = storeToRefs(forecastStore);
-    const { data: dataCompetitions } = storeToRefs(competitionStore);
+    const { values: dataTeams } = storeToRefs(teamStore);
+    const { values: dataSports } = storeToRefs(sportStore);
+    const { values: dataForecasts } = storeToRefs(forecastStore);
+    const { values: dataCompetitions } = storeToRefs(competitionStore);
 
     const { submit } = defineProps<{
         submit: (form: FormSubmitEvent) => void;
@@ -61,7 +61,7 @@
                 <span class="block">Домашняя команда</span>
                 <Select
                     name="homeTeam"
-                    :options="dataTeams?.data"
+                    :options="dataTeams"
                     optionLabel="name"
                     class="w-full"
                 />
@@ -72,7 +72,7 @@
                 <span class="block">Гостевая команда</span>
                 <Select
                     name="guestTeam"
-                    :options="dataTeams?.data"
+                    :options="dataTeams"
                     optionLabel="name"
                     class="w-full"
                 />
@@ -83,7 +83,7 @@
                 <span class="block">Прогноз</span>
                 <Select
                     name="forecast"
-                    :options="dataForecasts?.data"
+                    :options="dataForecasts"
                     optionLabel="name"
                     class="w-full"
                 />
@@ -112,7 +112,7 @@
                 <span class="block">Чемпионат</span>
                 <Select
                     name="competition"
-                    :options="dataCompetitions?.data"
+                    :options="dataCompetitions"
                     optionLabel="name"
                     class="w-full"
                 />
@@ -123,7 +123,7 @@
                 <span class="block">Вид спорта</span>
                 <Select
                     name="sport"
-                    :options="dataSports?.data"
+                    :options="dataSports"
                     optionLabel="name"
                     class="w-full"
                 />

@@ -6,5 +6,7 @@ export function useFindAllOfTeams() {
     return useQuery({
         queryKey: [useTeamKeys.FIND_ALL],
         queryFn: findAllOfTeams,
+        retry: false,
+        staleTime: 5000,
     });
 }

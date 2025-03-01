@@ -6,5 +6,7 @@ export function useFindAllOfSports() {
     return useQuery({
         queryKey: [useSportKeys.FIND_ALL],
         queryFn: findAllOfSports,
+        retry: false,
+        staleTime: 5000,
     });
 }

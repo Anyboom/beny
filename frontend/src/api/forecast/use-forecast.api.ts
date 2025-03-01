@@ -6,5 +6,7 @@ export function useFindAllOfForecasts() {
     return useQuery({
         queryKey: [useForecastKeys.FIND_ALL],
         queryFn: findAllOfForecasts,
+        retry: false,
+        staleTime: 5000,
     });
 }

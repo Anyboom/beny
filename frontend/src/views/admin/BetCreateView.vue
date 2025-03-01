@@ -12,6 +12,8 @@
     import { useSportStore } from "@/stores/sport.store";
     import { useForecastStore } from "@/stores/forecast.store";
     import { useCompetitionStore } from "@/stores/competition.store";
+    import { storeToRefs } from "pinia";
+    import { findBy } from "@/utils/find-by.utils";
 
     const events = reactive<Partial<EventEntity>[]>([]);
 
@@ -19,6 +21,11 @@
     const sportStore = useSportStore();
     const forecastStore = useForecastStore();
     const competitionStore = useCompetitionStore();
+
+    const { values: dataTeams } = storeToRefs(teamStore);
+    const { values: dataSports } = storeToRefs(sportStore);
+    const { values: dataForecasts } = storeToRefs(forecastStore);
+    const { values: dataCompetitions } = storeToRefs(competitionStore);
 
     const form = useTemplateRef<InstanceType<typeof BetCreateForm>>("form");
 
@@ -64,7 +71,9 @@
                         <Column header="Чемпионат">
                             <template #body="{ data }">
                                 {{
-                                    competitionStore.findById(
+                                    findBy(
+                                        dataCompetitions,
+                                        "id",
                                         data.competitionId,
                                     )?.name
                                 }}
@@ -72,23 +81,31 @@
                         </Column>
                         <Column header="Гостевая команда">
                             <template #body="{ data }">
-                                {{ teamStore.findById(data.guestTeamId)?.name }}
+                                {{
+                                    findBy(dataTeams, "id", data.guestTeamId)
+                                        ?.name
+                                }}
                             </template>
                         </Column>
                         <Column header="Домашняя команда">
                             <template #body="{ data }">
-                                {{ teamStore.findById(data.homeTeamId)?.name }}
+                                {{
+                                    findBy(dataTeams, "id", data.homeTeamId)
+                                        ?.name
+                                }}
                             </template>
                         </Column>
                         <Column header="Вид спорта">
                             <template #body="{ data }">
-                                {{ sportStore.findById(data.sportId)?.name }}
+                                {{
+                                    findBy(dataSports, "id", data.sportId)?.name
+                                }}
                             </template>
                         </Column>
                         <Column header="Ставка">
                             <template #body="{ data }">
                                 {{
-                                    forecastStore.findById(data.forecastId)
+                                    findBy(dataForecasts, "id", data.forecastId)
                                         ?.name
                                 }}
                             </template>
@@ -98,7 +115,11 @@
             </base-wrapper>
         </div>
         <base-wrapper class="flex justify-end">
-            <Button severity="secondary" label="Сохранить"></Button>
+            <Button
+                severity="secondary"
+                label="Сохранить"
+                :disabled="events.length <= 0"
+            ></Button>
         </base-wrapper>
     </div>
 </template>

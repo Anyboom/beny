@@ -8,18 +8,18 @@
     import { useRouter } from "vue-router";
     import type { SignUpDto } from "@/api/auth/dto/sign-up.dto.ts";
     import { type AxiosResponse, AxiosError, HttpStatusCode } from "axios";
-    import { useAuthStore } from "@/stores/auth.store";
     import { RouteNamesEnum } from "@/router/types/router.types";
     import { useI18n } from "vue-i18n";
+    import { useUserStore } from "@/stores/user.store";
 
     const { t } = useI18n();
     const { mutate } = useSignInApi();
 
+    const userStore = useUserStore();
+
     const toastInstance = useToast();
     const toastService = new ToastService(toastInstance);
     const router = useRouter();
-
-    const authStore = useAuthStore();
 
     function onSubmit(form: FormSubmitEvent): void {
         const data: SignUpDto = {
@@ -50,7 +50,7 @@
             return;
         }
 
-        authStore.setToken(response.data.access_token);
+        await userStore.signIn(response.data.access_token);
 
         await router.push({
             name: RouteNamesEnum.adminIndex,
