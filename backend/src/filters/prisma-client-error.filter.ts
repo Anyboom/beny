@@ -13,6 +13,12 @@ export class PrismaClientErrorFilter implements ExceptionFilter {
     notFound: {
       code: 'P2025',
       status: HttpStatus.NOT_FOUND,
+      message: 'Not found',
+    },
+    foreignKeyFailed: {
+      code: 'P2003',
+      status: HttpStatus.NOT_FOUND,
+      message: 'Not found',
     },
   };
 
@@ -28,7 +34,11 @@ export class PrismaClientErrorFilter implements ExceptionFilter {
     switch (exception.code) {
       case this.exceptions.notFound.code:
         status = this.exceptions.notFound.status;
-        message = 'Not found';
+        message = this.exceptions.notFound.message;
+        break;
+      case this.exceptions.foreignKeyFailed.code:
+        status = this.exceptions.foreignKeyFailed.status;
+        message = this.exceptions.foreignKeyFailed.message;
         break;
     }
 
