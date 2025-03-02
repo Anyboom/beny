@@ -5,15 +5,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateEventDto {
   /**
-   * Идентификатор.
-   */
-  @ApiProperty()
-  @Expose()
-  @IsString()
-  @IsNotEmpty()
-  id: string;
-
-  /**
    * Статус.
    */
   @ApiProperty()
