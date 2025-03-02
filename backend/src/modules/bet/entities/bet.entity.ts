@@ -1,6 +1,8 @@
 import { Bet } from '@prisma/client';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose, Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
+import { UserEntity } from '@/modules/user/entities/user.entity';
+import { EventEntity } from '@/modules/event/entities/event.entity';
 
 export class BetEntity implements Bet {
   /**
@@ -10,10 +12,22 @@ export class BetEntity implements Bet {
   @Expose()
   id: string;
 
+  @Exclude()
+  userId: string;
+
   /**
    * Идентификатор сущности `country`.
    */
   @ApiProperty()
+  @Type(() => UserEntity)
   @Expose()
-  userId: string;
+  user: UserEntity;
+
+  /**
+   * Массив сущностей `event`.
+   */
+  @ApiProperty()
+  @Type(() => EventEntity)
+  @Expose()
+  events: EventEntity[];
 }

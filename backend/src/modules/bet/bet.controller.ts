@@ -14,6 +14,7 @@ import { UpdateBetDto } from './dto/update-bet.dto';
 import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { BetEntity } from '@/modules/bet/entities/bet.entity';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { plainToInstance } from 'class-transformer';
 
 @Controller('bet')
 export class BetController {
@@ -26,8 +27,11 @@ export class BetController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createBetDto: CreateBetDto): Promise<BetEntity> {
-    return this.betService.create(createBetDto);
+  async create(@Body() createBetDto: CreateBetDto): Promise<BetEntity> {
+    return plainToInstance(
+      BetEntity,
+      await this.betService.create(createBetDto),
+    );
   }
 
   @ApiResponse({
@@ -37,8 +41,8 @@ export class BetController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<BetEntity[]> {
-    return this.betService.findAll();
+  async findAll(): Promise<BetEntity[]> {
+    return plainToInstance(BetEntity, await this.betService.findAll());
   }
 
   @ApiResponse({
@@ -48,8 +52,8 @@ export class BetController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<BetEntity> {
-    return this.betService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<BetEntity> {
+    return plainToInstance(BetEntity, await this.betService.findOne(id));
   }
 
   @ApiResponse({
@@ -59,11 +63,14 @@ export class BetController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateBetDto: UpdateBetDto,
   ): Promise<BetEntity> {
-    return this.betService.update(id, updateBetDto);
+    return plainToInstance(
+      BetEntity,
+      await this.betService.update(id, updateBetDto),
+    );
   }
 
   @ApiResponse({
@@ -73,7 +80,7 @@ export class BetController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<BetEntity> {
-    return this.betService.remove(id);
+  async remove(@Param('id') id: string): Promise<BetEntity> {
+    return plainToInstance(BetEntity, await this.betService.remove(id));
   }
 }

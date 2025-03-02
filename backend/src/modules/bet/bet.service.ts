@@ -10,18 +10,36 @@ export class BetService {
 
   create(createBetDto: CreateBetDto): Promise<BetEntity> {
     return this.prismaService.bet.create({
-      data: createBetDto,
+      data: {
+        ...createBetDto,
+        events: {
+          create: createBetDto.events,
+        },
+      },
+      include: {
+        user: true,
+        events: true,
+      },
     });
   }
 
   findAll(): Promise<BetEntity[]> {
-    return this.prismaService.bet.findMany();
+    return this.prismaService.bet.findMany({
+      include: {
+        user: true,
+        events: true,
+      },
+    });
   }
 
   findOne(id: string): Promise<BetEntity> {
     return this.prismaService.bet.findFirstOrThrow({
       where: {
         id: id,
+      },
+      include: {
+        user: true,
+        events: true,
       },
     });
   }
@@ -31,7 +49,16 @@ export class BetService {
       where: {
         id: id,
       },
-      data: updateBetDto,
+      data: {
+        ...updateBetDto,
+        events: {
+          create: updateBetDto.events,
+        },
+      },
+      include: {
+        user: true,
+        events: true,
+      },
     });
   }
 
@@ -39,6 +66,10 @@ export class BetService {
     return this.prismaService.bet.delete({
       where: {
         id: id,
+      },
+      include: {
+        user: true,
+        events: true,
       },
     });
   }
