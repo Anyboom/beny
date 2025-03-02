@@ -8,6 +8,7 @@ import { useForecastKeys } from "@/api/forecast/use-forecast.keys";
 import { useSportKeys } from "@/api/sport/use-sport.keys";
 import { useCompetitionKeys } from "@/api/competition/use-competition.keys";
 import { useAuthKeys } from "@/api/auth/use-auth.keys";
+import type { UserEntity } from "@/entities/user.entity";
 
 export const useUserStore = defineStore("user", () => {
   const { data } = useProfileApi();
@@ -15,7 +16,7 @@ export const useUserStore = defineStore("user", () => {
   const authStore = useAuthStore();
   const queryClient = useQueryClient();
 
-  const profile = computed(() => data.value?.data);
+  const profile = computed<UserEntity>(() => data.value?.data);
 
   async function signIn(accessToken: string) {
     authStore.setToken(accessToken);
