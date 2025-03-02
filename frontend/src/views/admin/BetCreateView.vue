@@ -14,9 +14,24 @@
   import { useCompetitionStore } from "@/stores/competition.store";
   import { storeToRefs } from "pinia";
   import { findBy } from "@/utils/find-by.utils";
+  import { useUserStore } from "@/stores/user.store";
+  import type { CreateBetDto } from "@/api/bet/dto/create-bet.dto";
+  import { useCreateBet } from "@/api/bet/use-bet.api";
+  import type { AxiosResponse } from "axios";
+  import { useToast } from "primevue";
+  import { ToastService } from "@/services/toast.service";
+  import { RouteNamesEnum } from "@/router/types/router.types";
+  import { useRouter } from "vue-router";
 
-  const events = reactive<Partial<EventEntity>[]>([]);
+  const events = reactive<Omit<EventEntity, "id" | "betId">[]>([]);
 
+  const { mutate } = useCreateBet();
+
+  const toastInstance = useToast();
+  const toastService = new ToastService(toastInstance);
+  const router = useRouter();
+
+  const userStore = useUserStore();
   const teamStore = useTeamStore();
   const sportStore = useSportStore();
   const forecastStore = useForecastStore();
@@ -41,6 +56,30 @@
     });
 
     form.value?.reset();
+  }
+
+  function createBet() {
+    if (events.length == 0) {
+      return;
+    }
+
+    const newBet: CreateBetDto = {
+      events: events,
+      userId: userStore.profile.id,
+    };
+
+    mutate(newBet, {
+      onSuccess: onSuccess,
+    });
+  }
+
+  async function onSuccess(data: AxiosResponse) {
+    if (data.status === 201) {
+      await router.push({
+        name: RouteNamesEnum.adminIndex,
+      });
+      toastService.showSuccess("Ставка успешно создана");
+    }
   }
 </script>
 
@@ -86,7 +125,7 @@
       </base-wrapper>
     </div>
     <base-wrapper class="flex justify-end">
-      <Button severity="secondary" label="Сохранить" :disabled="events.length <= 0"></Button>
+      <Button severity="secondary" label="Сохранить" :disabled="events.length <= 0" @click="createBet"></Button>
     </base-wrapper>
   </div>
 </template>
