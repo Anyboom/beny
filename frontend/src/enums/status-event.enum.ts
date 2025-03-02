@@ -1,6 +1,6 @@
 export enum StatusEventEnum {
-  WIN,
-  LOSE,
-  RETURN,
-  NOT_CALCULATED,
+  WIN = "WIN",
+  LOSE = "LOSE",
+  RETURN = "RETURN",
+  NOT_CALCULATED = "NOT_CALCULATED",
 }
