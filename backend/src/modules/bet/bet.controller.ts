@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { BetService } from './bet.service';
 import { CreateBetDto } from './dto/create-bet.dto';
@@ -15,6 +16,8 @@ import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { BetEntity } from '@/modules/bet/entities/bet.entity';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { plainToInstance } from 'class-transformer';
+import { QueryPaginationDto } from '@/utilities/pagination/dto/pagination.dto';
+import { Authorized } from '@/modules/auth/decorators/authorized.decorator';
 
 @Controller('bet')
 export class BetController {
@@ -43,6 +46,16 @@ export class BetController {
   @Get()
   async findAll(): Promise<BetEntity[]> {
     return plainToInstance(BetEntity, await this.betService.findAll());
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('paginate')
+  async findPaginate(
+    @Authorized('id') userId: string,
+    @Query() query?: QueryPaginationDto,
+  ) {
+    return this.betService.findPaginate({ userId: userId }, query);
   }
 
   @ApiResponse({
