@@ -16,16 +16,21 @@
   import { findBy } from "@/utils/find-by.utils";
   import { useUserStore } from "@/stores/user.store";
   import type { CreateBetDto } from "@/api/bet/dto/create-bet.dto";
-  import { useCreateBet } from "@/api/bet/use-bet.api";
   import type { AxiosResponse } from "axios";
   import { useToast } from "primevue";
   import { ToastService } from "@/services/toast.service";
   import { RouteNamesEnum } from "@/router/types/router.types";
   import { useRouter } from "vue-router";
+  import { useMutation } from "@tanstack/vue-query";
+  import { useBetKeys } from "@/api/bet/use-bet.keys";
+  import { createBetApi } from "@/api/bet/bet.api";
 
   const events = reactive<Omit<EventEntity, "id" | "betId">[]>([]);
 
-  const { mutate } = useCreateBet();
+  const { mutate } = useMutation({
+    mutationKey: [useBetKeys.CREATE],
+    mutationFn: (createBetDto: CreateBetDto) => createBetApi(createBetDto),
+  });
 
   const toastInstance = useToast();
   const toastService = new ToastService(toastInstance);

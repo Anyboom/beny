@@ -2,15 +2,20 @@
   import BaseWrapper from "@/components/ui/BaseWrapper.vue";
   import SignUpForm from "@/components/forms/auth/sign-up/SignUpForm.vue";
   import { type FormSubmitEvent } from "@primevue/forms";
-  import { useSignUpApi } from "@/api/auth/use-auth.api";
   import { useToast } from "primevue";
   import { ToastService } from "@/services/toast.service";
   import { useRouter } from "vue-router";
   import { AxiosError, type AxiosResponse, HttpStatusCode } from "axios";
   import { type SignUpDto } from "@/api/auth/dto/sign-up.dto";
   import { RouteNamesEnum } from "@/router/types/router.types";
+  import { useMutation } from "@tanstack/vue-query";
+  import { useAuthKeys } from "@/api/auth/use-auth.keys";
+  import { signUpApi } from "@/api/auth/auth.api";
 
-  const { mutate } = useSignUpApi();
+  const { mutate } = useMutation({
+    mutationKey: [useAuthKeys.SIGN_UP],
+    mutationFn: (data: SignUpDto) => signUpApi(data),
+  });
 
   const toastInstance = useToast();
   const toastService = new ToastService(toastInstance);

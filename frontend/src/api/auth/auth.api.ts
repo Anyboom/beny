@@ -10,6 +10,6 @@ export function signInApi(data: SignInDto) {
   return httpClient.post("http://api.beny.localhost/auth/sign-in", data);
 }
 
-export function profileApi() {
+export function getProfileApi() {
   return httpClient.get("http://api.beny.localhost/auth/profile");
 }

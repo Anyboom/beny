@@ -1,5 +1,5 @@
 import httpClient from "@/api/http-client";
 
-export function findAllOfSports() {
+export function findAllOfSportsApi() {
   return httpClient.get("http://api.beny.localhost/sport");
 }

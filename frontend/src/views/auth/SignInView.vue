@@ -2,7 +2,6 @@
   import BaseWrapper from "@/components/ui/BaseWrapper.vue";
   import SignInForm from "@/components/forms/auth/sign-in/SignInForm.vue";
   import type { FormSubmitEvent } from "@primevue/forms";
-  import { useSignInApi } from "@/api/auth/use-auth.api";
   import { useToast } from "primevue";
   import { ToastService } from "@/services/toast.service";
   import { useRouter } from "vue-router";
@@ -11,9 +10,16 @@
   import { RouteNamesEnum } from "@/router/types/router.types";
   import { useI18n } from "vue-i18n";
   import { useUserStore } from "@/stores/user.store";
+  import { useMutation } from "@tanstack/vue-query";
+  import { useAuthKeys } from "@/api/auth/use-auth.keys";
+  import type { SignInDto } from "@/api/auth/dto/sign-in.dto";
+  import { signInApi } from "@/api/auth/auth.api";
 
   const { t } = useI18n();
-  const { mutate } = useSignInApi();
+  const { mutate } = useMutation({
+    mutationKey: [useAuthKeys.SIGN_IN],
+    mutationFn: (data: SignInDto) => signInApi(data),
+  });
 
   const userStore = useUserStore();
 
