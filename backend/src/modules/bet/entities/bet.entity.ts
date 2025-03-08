@@ -12,11 +12,14 @@ export class BetEntity implements Bet {
   @Expose()
   id: string;
 
+  /**
+   * Идентификатор сущности `User`.
+   */
   @Exclude()
   userId: string;
 
   /**
-   * Идентификатор сущности `country`.
+   * Сущность `User`.
    */
   @ApiProperty()
   @Type(() => UserEntity)

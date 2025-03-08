@@ -14,6 +14,7 @@ import { UpdateCompetitionDto } from './dto/update-competition.dto';
 import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { CompetitionEntity } from '@/modules/competition/entities/competition.entity';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { plainToInstance } from 'class-transformer';
 
 @Controller('competition')
 export class CompetitionController {
@@ -26,10 +27,13 @@ export class CompetitionController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(
+  async create(
     @Body() createCompetitionDto: CreateCompetitionDto,
   ): Promise<CompetitionEntity> {
-    return this.competitionService.create(createCompetitionDto);
+    return plainToInstance(
+      CompetitionEntity,
+      await this.competitionService.create(createCompetitionDto),
+    );
   }
 
   @ApiResponse({
@@ -39,8 +43,11 @@ export class CompetitionController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<CompetitionEntity[]> {
-    return this.competitionService.findAll();
+  async findAll(): Promise<CompetitionEntity[]> {
+    return plainToInstance(
+      CompetitionEntity,
+      await this.competitionService.findAll(),
+    );
   }
 
   @ApiResponse({
@@ -50,8 +57,11 @@ export class CompetitionController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<CompetitionEntity> {
-    return this.competitionService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<CompetitionEntity> {
+    return plainToInstance(
+      CompetitionEntity,
+      await this.competitionService.findOne(id),
+    );
   }
 
   @ApiResponse({
@@ -61,11 +71,14 @@ export class CompetitionController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateCompetitionDto: UpdateCompetitionDto,
   ): Promise<CompetitionEntity> {
-    return this.competitionService.update(id, updateCompetitionDto);
+    return plainToInstance(
+      CompetitionEntity,
+      await this.competitionService.update(id, updateCompetitionDto),
+    );
   }
 
   @ApiResponse({
@@ -75,7 +88,10 @@ export class CompetitionController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<CompetitionEntity> {
-    return this.competitionService.remove(id);
+  async remove(@Param('id') id: string): Promise<CompetitionEntity> {
+    return plainToInstance(
+      CompetitionEntity,
+      await this.competitionService.remove(id),
+    );
   }
 }

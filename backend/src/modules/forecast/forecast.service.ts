@@ -2,23 +2,23 @@ import { Injectable } from '@nestjs/common';
 import { CreateForecastDto } from './dto/create-forecast.dto';
 import { UpdateForecastDto } from './dto/update-forecast.dto';
 import { PrismaService } from '@/services/prisma/prisma.service';
-import { ForecastEntity } from '@/modules/forecast/entities/forecast.entity';
+import { Forecast } from '@prisma/client';
 
 @Injectable()
 export class ForecastService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  create(createForecastDto: CreateForecastDto): Promise<ForecastEntity> {
+  create(createForecastDto: CreateForecastDto): Promise<Forecast> {
     return this.prismaService.forecast.create({
       data: createForecastDto,
     });
   }
 
-  findAll(): Promise<ForecastEntity[]> {
+  findAll(): Promise<Forecast[]> {
     return this.prismaService.forecast.findMany();
   }
 
-  findOne(id: string): Promise<ForecastEntity> {
+  findOne(id: string): Promise<Forecast> {
     return this.prismaService.forecast.findFirstOrThrow({
       where: {
         id: id,
@@ -26,10 +26,7 @@ export class ForecastService {
     });
   }
 
-  update(
-    id: string,
-    updateForecastDto: UpdateForecastDto,
-  ): Promise<ForecastEntity> {
+  update(id: string, updateForecastDto: UpdateForecastDto): Promise<Forecast> {
     return this.prismaService.forecast.update({
       where: {
         id: id,
@@ -38,7 +35,7 @@ export class ForecastService {
     });
   }
 
-  remove(id: string): Promise<ForecastEntity> {
+  remove(id: string): Promise<Forecast> {
     return this.prismaService.forecast.delete({
       where: {
         id: id,

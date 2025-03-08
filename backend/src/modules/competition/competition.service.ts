@@ -2,25 +2,23 @@ import { Injectable } from '@nestjs/common';
 import { CreateCompetitionDto } from './dto/create-competition.dto';
 import { UpdateCompetitionDto } from './dto/update-competition.dto';
 import { PrismaService } from '@/services/prisma/prisma.service';
-import { CompetitionEntity } from '@/modules/competition/entities/competition.entity';
+import { Competition } from '@prisma/client';
 
 @Injectable()
 export class CompetitionService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  create(
-    createCompetitionDto: CreateCompetitionDto,
-  ): Promise<CompetitionEntity> {
+  create(createCompetitionDto: CreateCompetitionDto): Promise<Competition> {
     return this.prismaService.competition.create({
       data: createCompetitionDto,
     });
   }
 
-  findAll(): Promise<CompetitionEntity[]> {
+  findAll(): Promise<Competition[]> {
     return this.prismaService.competition.findMany();
   }
 
-  findOne(id: string): Promise<CompetitionEntity> {
+  findOne(id: string): Promise<Competition> {
     return this.prismaService.competition.findFirstOrThrow({
       where: {
         id: id,
@@ -31,7 +29,7 @@ export class CompetitionService {
   update(
     id: string,
     updateCompetitionDto: UpdateCompetitionDto,
-  ): Promise<CompetitionEntity> {
+  ): Promise<Competition> {
     return this.prismaService.competition.update({
       where: {
         id: id,
@@ -40,7 +38,7 @@ export class CompetitionService {
     });
   }
 
-  remove(id: string): Promise<CompetitionEntity> {
+  remove(id: string): Promise<Competition> {
     return this.prismaService.competition.delete({
       where: {
         id: id,

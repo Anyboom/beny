@@ -14,6 +14,7 @@ import { UpdateEventDto } from './dto/update-event.dto';
 import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { EventEntity } from '@/modules/event/entities/event.entity';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { plainToInstance } from 'class-transformer';
 
 @Controller('event')
 export class EventController {
@@ -26,8 +27,11 @@ export class EventController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createEventDto: CreateEventDto): Promise<EventEntity> {
-    return this.eventService.create(createEventDto);
+  async create(@Body() createEventDto: CreateEventDto): Promise<EventEntity> {
+    return plainToInstance(
+      EventEntity,
+      await this.eventService.create(createEventDto),
+    );
   }
 
   @ApiResponse({
@@ -37,7 +41,7 @@ export class EventController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<EventEntity[]> {
+  async findAll(): Promise<EventEntity[]> {
     return this.eventService.findAll();
   }
 
@@ -48,7 +52,7 @@ export class EventController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<EventEntity> {
+  async findOne(@Param('id') id: string): Promise<EventEntity> {
     return this.eventService.findOne(id);
   }
 
@@ -59,7 +63,7 @@ export class EventController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateEventDto: UpdateEventDto,
   ): Promise<EventEntity> {
@@ -73,7 +77,7 @@ export class EventController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<EventEntity> {
+  async remove(@Param('id') id: string): Promise<EventEntity> {
     return this.eventService.remove(id);
   }
 }

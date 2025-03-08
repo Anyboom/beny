@@ -2,20 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { CreateBetDto } from './dto/create-bet.dto';
 import { UpdateBetDto } from './dto/update-bet.dto';
 import { PrismaService } from '@/services/prisma/prisma.service';
-import { BetEntity } from '@/modules/bet/entities/bet.entity';
 import { QueryPaginationDto } from '@/utilities/pagination/dto/pagination.dto';
-import {
-  paginate,
-  PaginateOutput,
-  paginateOutput,
-} from '@/utilities/pagination/pagination.utility';
-import { plainToInstance } from 'class-transformer';
+import { paginate } from '@/utilities/pagination/pagination.utility';
+import { Bet } from '@prisma/client';
 
 @Injectable()
 export class BetService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  create(createBetDto: CreateBetDto): Promise<BetEntity> {
+  create(createBetDto: CreateBetDto): Promise<Bet> {
     return this.prismaService.bet.create({
       data: {
         ...createBetDto,
@@ -33,7 +28,7 @@ export class BetService {
   async findPaginate(
     where?: Record<string, string>,
     query?: QueryPaginationDto,
-  ): Promise<PaginateOutput<BetEntity>> {
+  ): Promise<[Bet[], number]> {
     const [posts, total] = await Promise.all([
       await this.prismaService.bet.findMany({
         include: {
@@ -48,14 +43,10 @@ export class BetService {
       }),
     ]);
 
-    return paginateOutput<BetEntity>(
-      plainToInstance(BetEntity, posts),
-      total,
-      query,
-    );
+    return [posts, total];
   }
 
-  findAll(): Promise<BetEntity[]> {
+  findAll(): Promise<Bet[]> {
     return this.prismaService.bet.findMany({
       include: {
         user: true,
@@ -64,7 +55,7 @@ export class BetService {
     });
   }
 
-  findOne(id: string): Promise<BetEntity> {
+  findOne(id: string): Promise<Bet> {
     return this.prismaService.bet.findFirstOrThrow({
       where: {
         id: id,
@@ -76,7 +67,7 @@ export class BetService {
     });
   }
 
-  update(id: string, updateBetDto: UpdateBetDto): Promise<BetEntity> {
+  update(id: string, updateBetDto: UpdateBetDto): Promise<Bet> {
     return this.prismaService.bet.update({
       where: {
         id: id,
@@ -94,7 +85,7 @@ export class BetService {
     });
   }
 
-  remove(id: string): Promise<BetEntity> {
+  remove(id: string): Promise<Bet> {
     return this.prismaService.bet.delete({
       where: {
         id: id,

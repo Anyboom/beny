@@ -14,6 +14,7 @@ import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { TeamEntity } from '@/modules/team/entities/team.entity';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { plainToInstance } from 'class-transformer';
 
 @Controller('team')
 export class TeamController {
@@ -26,8 +27,11 @@ export class TeamController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createTeamDto: CreateTeamDto): Promise<TeamEntity> {
-    return this.teamService.create(createTeamDto);
+  async create(@Body() createTeamDto: CreateTeamDto): Promise<TeamEntity> {
+    return plainToInstance(
+      TeamEntity,
+      await this.teamService.create(createTeamDto),
+    );
   }
 
   @ApiResponse({
@@ -37,8 +41,8 @@ export class TeamController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<TeamEntity[]> {
-    return this.teamService.findAll();
+  async findAll(): Promise<TeamEntity[]> {
+    return plainToInstance(TeamEntity, await this.teamService.findAll());
   }
 
   @ApiResponse({
@@ -48,8 +52,8 @@ export class TeamController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<TeamEntity> {
-    return this.teamService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<TeamEntity> {
+    return plainToInstance(TeamEntity, await this.teamService.findOne(id));
   }
 
   @ApiResponse({
@@ -59,11 +63,14 @@ export class TeamController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateTeamDto: UpdateTeamDto,
   ): Promise<TeamEntity> {
-    return this.teamService.update(id, updateTeamDto);
+    return plainToInstance(
+      TeamEntity,
+      await this.teamService.update(id, updateTeamDto),
+    );
   }
 
   @ApiResponse({
@@ -73,7 +80,7 @@ export class TeamController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<TeamEntity> {
-    return this.teamService.remove(id);
+  async remove(@Param('id') id: string): Promise<TeamEntity> {
+    return plainToInstance(TeamEntity, await this.teamService.remove(id));
   }
 }

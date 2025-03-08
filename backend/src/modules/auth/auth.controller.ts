@@ -23,8 +23,8 @@ export class AuthController {
     type: TokenDto,
   })
   @Post('sign-in')
-  signIn(@Body() signInDto: SignInDto): Promise<TokenDto> {
-    return this.authService.signIn(signInDto);
+  async signIn(@Body() signInDto: SignInDto): Promise<TokenDto> {
+    return plainToInstance(TokenDto, await this.authService.signIn(signInDto));
   }
 
   /**
@@ -36,8 +36,11 @@ export class AuthController {
     type: UserEntity,
   })
   @Post('sign-up')
-  signUp(@Body() createUserDto: CreateUserDto): Promise<UserEntity> {
-    return this.authService.signUp(createUserDto);
+  async signUp(@Body() createUserDto: CreateUserDto): Promise<UserEntity> {
+    return plainToInstance(
+      UserEntity,
+      await this.authService.signUp(createUserDto),
+    );
   }
 
   /**

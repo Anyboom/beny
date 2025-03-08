@@ -3,10 +3,9 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { SignInDto } from '@/modules/auth/dto/sign-in.dto';
 import { TokenDto } from '@/modules/auth/dto/token.dto';
-import { plainToInstance } from 'class-transformer';
 import { UserService } from '@/modules/user/user.service';
-import { UserEntity } from '@/modules/user/entities/user.entity';
 import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +19,7 @@ export class AuthService {
    * @param {string} email - почта пользователя.
    * @returns {Promise<UserEntity | null>} - возвращает `UserEntity`, если `true`, иначе - `null`.
    */
-  validate(email: string): Promise<UserEntity | null> {
+  validate(email: string): Promise<User | null> {
     try {
       return this.userService.findOneByEmail(email);
     } catch {
@@ -34,7 +33,7 @@ export class AuthService {
    * @returns {Promise<TokenDto>} - токен авторизации.
    */
   async signIn(signInDto: SignInDto): Promise<TokenDto> {
-    const user: UserEntity | null = await this.validate(signInDto.email);
+    const user: User | null = await this.validate(signInDto.email);
 
     if (user === null) {
       throw new HttpException(
@@ -59,11 +58,9 @@ export class AuthService {
       email: user.email,
     };
 
-    const token = {
+    return {
       access_token: this.jwtService.sign(payload),
     };
-
-    return plainToInstance(TokenDto, token);
   }
 
   /**
@@ -71,8 +68,8 @@ export class AuthService {
    * @param {CreateUserDto} createUserDto - данные пользователя.
    * @returns {Promise<UserEntity>} - созданная модель пользователя.
    */
-  async signUp(createUserDto: CreateUserDto): Promise<UserEntity> {
-    const user: UserEntity | null = await this.userService.findOneByEmail(
+  async signUp(createUserDto: CreateUserDto): Promise<User> {
+    const user: User | null = await this.userService.findOneByEmail(
       createUserDto.email,
     );
 
@@ -80,11 +77,9 @@ export class AuthService {
       throw new HttpException('The user already exists', HttpStatus.CONFLICT);
     }
 
-    const newUser: UserEntity = await this.userService.create({
+    return await this.userService.create({
       email: createUserDto.email,
       password: await bcrypt.hash(createUserDto.password, 10),
     });
-
-    return plainToInstance(UserEntity, newUser);
   }
 }

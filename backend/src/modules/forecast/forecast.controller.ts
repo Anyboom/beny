@@ -14,6 +14,7 @@ import { UpdateForecastDto } from './dto/update-forecast.dto';
 import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { ForecastEntity } from '@/modules/forecast/entities/forecast.entity';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { plainToInstance } from 'class-transformer';
 
 @Controller('forecast')
 export class ForecastController {
@@ -26,10 +27,13 @@ export class ForecastController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(
+  async create(
     @Body() createForecastDto: CreateForecastDto,
   ): Promise<ForecastEntity> {
-    return this.forecastService.create(createForecastDto);
+    return plainToInstance(
+      ForecastEntity,
+      await this.forecastService.create(createForecastDto),
+    );
   }
 
   @ApiResponse({
@@ -39,8 +43,11 @@ export class ForecastController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<ForecastEntity[]> {
-    return this.forecastService.findAll();
+  async findAll(): Promise<ForecastEntity[]> {
+    return plainToInstance(
+      ForecastEntity,
+      await this.forecastService.findAll(),
+    );
   }
 
   @ApiResponse({
@@ -50,8 +57,11 @@ export class ForecastController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<ForecastEntity> {
-    return this.forecastService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<ForecastEntity> {
+    return plainToInstance(
+      ForecastEntity,
+      await this.forecastService.findOne(id),
+    );
   }
 
   @ApiResponse({
@@ -61,11 +71,14 @@ export class ForecastController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateForecastDto: UpdateForecastDto,
   ): Promise<ForecastEntity> {
-    return this.forecastService.update(id, updateForecastDto);
+    return plainToInstance(
+      ForecastEntity,
+      await this.forecastService.update(id, updateForecastDto),
+    );
   }
 
   @ApiResponse({
@@ -75,7 +88,10 @@ export class ForecastController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<ForecastEntity> {
-    return this.forecastService.remove(id);
+  async remove(@Param('id') id: string): Promise<ForecastEntity> {
+    return plainToInstance(
+      ForecastEntity,
+      await this.forecastService.remove(id),
+    );
   }
 }

@@ -2,7 +2,7 @@ import { QueryPaginationDto } from '@/utilities/pagination/dto/pagination.dto';
 import { NotFoundException } from '@nestjs/common';
 
 const DEFAULT_PAGE_NUMBER = 1;
-const DEFAULT_PAGE_SIZE = 2;
+const DEFAULT_PAGE_SIZE = 10;
 
 export interface PaginateOutput<T> {
   data: T[];

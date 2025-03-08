@@ -18,6 +18,7 @@ import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { plainToInstance } from 'class-transformer';
 import { QueryPaginationDto } from '@/utilities/pagination/dto/pagination.dto';
 import { Authorized } from '@/modules/auth/decorators/authorized.decorator';
+import { paginateOutput } from '@/utilities/pagination/pagination.utility';
 
 @Controller('bet')
 export class BetController {
@@ -55,7 +56,16 @@ export class BetController {
     @Authorized('id') userId: string,
     @Query() query?: QueryPaginationDto,
   ) {
-    return this.betService.findPaginate({ userId: userId }, query);
+    const [posts, total] = await this.betService.findPaginate(
+      { userId: userId },
+      query,
+    );
+
+    return paginateOutput<BetEntity>(
+      plainToInstance(BetEntity, posts),
+      total,
+      query,
+    );
   }
 
   @ApiResponse({

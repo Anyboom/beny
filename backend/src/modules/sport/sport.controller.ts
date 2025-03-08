@@ -14,6 +14,7 @@ import { UpdateSportDto } from './dto/update-sport.dto';
 import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { SportEntity } from '@/modules/sport/entities/sport.entity';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { plainToInstance } from 'class-transformer';
 
 @Controller('sport')
 export class SportController {
@@ -26,8 +27,11 @@ export class SportController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createSportDto: CreateSportDto): Promise<SportEntity> {
-    return this.sportService.create(createSportDto);
+  async create(@Body() createSportDto: CreateSportDto): Promise<SportEntity> {
+    return plainToInstance(
+      SportEntity,
+      await this.sportService.create(createSportDto),
+    );
   }
 
   @ApiResponse({
@@ -37,8 +41,8 @@ export class SportController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<SportEntity[]> {
-    return this.sportService.findAll();
+  async findAll(): Promise<SportEntity[]> {
+    return plainToInstance(SportEntity, await this.sportService.findAll());
   }
 
   @ApiResponse({
@@ -48,8 +52,8 @@ export class SportController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<SportEntity> {
-    return this.sportService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<SportEntity> {
+    return plainToInstance(SportEntity, await this.sportService.findOne(id));
   }
 
   @ApiResponse({
@@ -59,11 +63,14 @@ export class SportController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateSportDto: UpdateSportDto,
   ): Promise<SportEntity> {
-    return this.sportService.update(id, updateSportDto);
+    return plainToInstance(
+      SportEntity,
+      await this.sportService.update(id, updateSportDto),
+    );
   }
 
   @ApiResponse({
@@ -73,7 +80,7 @@ export class SportController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<SportEntity> {
-    return this.sportService.remove(id);
+  async remove(@Param('id') id: string): Promise<SportEntity> {
+    return plainToInstance(SportEntity, await this.sportService.remove(id));
   }
 }
