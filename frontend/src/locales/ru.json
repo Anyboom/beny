@@ -1,5 +1,13 @@
 {
   "sign-in-page": {
     "title": "Авторизация"
+  },
+  "bet-entity": {
+    "status": {
+      "NOT_CALCULATED": "Не расчитано",
+      "LOSE": "Проигрыш",
+      "WIN": "Выигрыш",
+      "RETURN": "Возврат"
+    }
   }
 }

@@ -19,7 +19,9 @@
       <base-wrapper class="h-fit">
         <SideMenu />
       </base-wrapper>
-      <slot></slot>
+      <KeepAlive>
+        <slot></slot>
+      </KeepAlive>
     </div>
   </div>
 </template>

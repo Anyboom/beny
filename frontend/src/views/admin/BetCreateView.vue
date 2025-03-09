@@ -21,7 +21,7 @@
   import { ToastService } from "@/services/toast.service";
   import { RouteNamesEnum } from "@/router/types/router.types";
   import { useRouter } from "vue-router";
-  import { useMutation } from "@tanstack/vue-query";
+  import { useMutation, useQueryClient } from "@tanstack/vue-query";
   import { useBetKeys } from "@/api/bet/use-bet.keys";
   import { createBetApi } from "@/api/bet/bet.api";
 
@@ -35,6 +35,7 @@
   const toastInstance = useToast();
   const toastService = new ToastService(toastInstance);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const userStore = useUserStore();
   const teamStore = useTeamStore();
@@ -80,9 +81,15 @@
 
   async function onSuccess(data: AxiosResponse) {
     if (data.status === 201) {
-      await router.push({
-        name: RouteNamesEnum.adminIndex,
-      });
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: [useBetKeys.PAGINATE],
+        }),
+        router.push({
+          name: RouteNamesEnum.adminIndex,
+        }),
+      ]);
+
       toastService.showSuccess("Ставка успешно создана");
     }
   }

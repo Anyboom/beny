@@ -77,7 +77,7 @@
     <div class="flex flex-col gap-1">
       <label>
         <span class="block">Коэффициент</span>
-        <InputNumber class="w-full" name="coefficient" />
+        <InputNumber class="w-full" name="coefficient" :min-fraction-digits="0" :max-fraction-digits="3" />
       </label>
     </div>
     <div class="flex flex-col gap-1">

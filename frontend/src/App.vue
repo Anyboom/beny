@@ -4,8 +4,8 @@
 </script>
 
 <template>
+  <VueQueryDevtools />
   <AppLayout>
-    <VueQueryDevtools />
     <RouterView />
   </AppLayout>
 </template>
