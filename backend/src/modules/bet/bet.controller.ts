@@ -18,7 +18,10 @@ import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { plainToInstance } from 'class-transformer';
 import { QueryPaginationDto } from '@/utilities/pagination/dto/pagination.dto';
 import { Authorized } from '@/modules/auth/decorators/authorized.decorator';
-import { paginateOutput } from '@/utilities/pagination/pagination.utility';
+import {
+  PaginateOutput,
+  paginateOutput,
+} from '@/utilities/pagination/pagination.utility';
 
 @Controller('bet')
 export class BetController {
@@ -49,6 +52,10 @@ export class BetController {
     return plainToInstance(BetEntity, await this.betService.findAll());
   }
 
+  @ApiResponse({
+    type: PaginateOutput<BetEntity>,
+    status: 200,
+  })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('paginate')
