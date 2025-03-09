@@ -1,19 +1,32 @@
 import { QueryPaginationDto } from '@/utilities/pagination/dto/pagination.dto';
 import { NotFoundException } from '@nestjs/common';
+import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 
 const DEFAULT_PAGE_NUMBER = 1;
 const DEFAULT_PAGE_SIZE = 10;
 
-export interface PaginateOutput<T> {
+class PaginateMeta {
+  @ApiProperty()
+  total: number;
+  @ApiProperty()
+  lastPage: number;
+  @ApiProperty()
+  currentPage: number;
+  @ApiProperty()
+  totalPerPage: number;
+  @ApiProperty()
+  prevPage: number | null;
+  @ApiProperty()
+  nextPage: number | null;
+}
+
+export class PaginateOutput<T> {
+  @ApiProperty()
   data: T[];
-  meta: {
-    total: number;
-    lastPage: number;
-    currentPage: number;
-    totalPerPage: number;
-    prevPage: number | null;
-    nextPage: number | null;
-  };
+  @ApiProperty()
+  @Type(() => PaginateMeta)
+  meta: PaginateMeta;
 }
 
 export function paginate(query?: QueryPaginationDto): {
